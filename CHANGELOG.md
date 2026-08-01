@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Expanded the project documentation with complete installation,
+  configuration, verification, troubleshooting, maintenance, security, and
+  release-testing instructions.
+
 ## 1.0.0 - 2026-08-01
 
 - Added a reproducible Drupal CMS AI test harness recipe.
