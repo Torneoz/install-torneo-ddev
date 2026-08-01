@@ -1,93 +1,398 @@
 # Drupal AI module test harness
 
-This repository builds a disposable Drupal CMS development site for testing:
+A disposable, reproducible Drupal CMS site for testing the Drupal AI ecosystem
+with OpenAI and xAI Grok. The project packages the modules, provider defaults,
+assistant, agent, chatbot block, Canvas integration, permissions, and local
+development environment required to rebuild the same test site from source.
 
-- [`drupal/ai`](https://www.drupal.org/project/ai)
-- `drupal/ai_costs`
-- AI Observability
-- AI CKEditor integration
-- AI Agents and Assistant API
-- AI Chatbot with a preconfigured DeepChat block
+This repository is an AI integration harness. It does not install
+`torneoz/torneo`.
+
+## Included features
+
+- Drupal AI Core 1.x
+- AI Agents and AI Assistant API
+- AI Chatbot with a preconfigured DeepChat toolbar block
 - AI Dashboard and AI API Explorer
-- `drupal/ai_provider_openai`
-- `drupal/grok` (the renamed Grok AI provider module)
-- `drupal/ai_image_studio`
+- AI Costs and AI Observability
+- AI CKEditor integration
+- OpenAI Provider
+- Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
+- AI Image Studio
+- Drupal Canvas components for both AI chatbot block types
+- Environment-backed Drupal Key entities for OpenAI and xAI
+- A preconfigured `Harness Chatbot` agent and assistant
 
-It does not install `torneoz/torneo`.
+Composer installs the exact dependency versions recorded in `composer.lock` and
+automatically applies the compatibility fixes in `patches/`.
 
 ## Requirements
 
+- Git
+- A supported Docker provider, such as Docker Desktop, OrbStack, Colima, or
+  Rancher Desktop
 - [DDEV](https://ddev.com/get-started/)
-- A working Docker provider
+- Internet access during the first dependency installation
+- An xAI API key to use the preconfigured Grok chatbot
+- An OpenAI API key only when testing OpenAI operations
 
-## Build or rebuild
+You do not need PHP, Composer, Drush, MariaDB, or Node.js installed directly on
+the host. DDEV provides them in containers.
 
-Run from the project root:
+## Quick start
 
-```bash
-ddev rebuild
-```
-
-The command asks before erasing the installed database. For an unattended local
-or CI build:
+Clone the repository and enter it:
 
 ```bash
-ddev rebuild --yes
+git clone https://github.com/Torneoz/install-torneo-ddev.git
+cd install-torneo-ddev
 ```
 
-The command installs the locked Composer dependencies, installs Drupal, applies
-the Drupal CMS starter recipe and the test-harness recipe, runs database
-updates, rebuilds caches, and verifies that all required AI modules are enabled.
-It also creates the project-root `private/` directory and verifies Drupal's
-`private://` stream wrapper is available and writable.
-
-Run `ddev launch` to open the active project URL. The initial local-only login
-is `admin` / `admin`.
-
-## Provider credentials
-
-The root `.env` file is ignored by Git and loaded into DDEV's web container.
-Copy the provided template and add local credentials:
+Create the local credentials file:
 
 ```bash
 cp .env.example .env
 ```
+
+Edit `.env` and add the provider keys you intend to test:
 
 ```dotenv
 OPENAI_API_KEY=
 XAI_API_KEY=
 ```
 
-The build creates environment-backed Drupal Key entities and assigns them to
-the OpenAI and Grok providers. Never commit API key values.
+Never commit `.env`. It is ignored by Git and passed only to the DDEV web
+container.
 
-## Updating the alpha modules
-
-The constraints in `composer.json` allow tagged `1.x` alpha releases, while
-`composer.lock` records the exact versions used by a rebuild.
+Build the complete site:
 
 ```bash
-ddev composer update drupal/grok drupal/ai_image_studio drupal/ai --with-all-dependencies
 ddev rebuild --yes
 ```
 
-Review and commit both `composer.json` and `composer.lock` when changing the
-tested release set.
+This is a destructive command. It drops all tables in the local DDEV database,
+installs Drupal again, applies the harness recipe and post-install
+configuration, runs database updates, rebuilds caches, and verifies the
+required modules and private file system.
 
-## Included configuration
+Open the site:
 
-The `ai_test_harness` recipe installs the AI modules and packages the provider
-defaults, environment-backed keys, chatbot assistant, agent, DeepChat block,
-Canvas components, and role permissions. A rebuild recreates this configuration
-without exporting secrets.
+```bash
+ddev launch
+```
 
-The Composer patches in `patches/` are part of the tested release and are
-applied automatically by `composer install`.
+The initial local-only administrator account is:
 
-## Common commands
+```text
+Username: admin
+Password: admin
+```
+
+Do not use these credentials on an internet-accessible or production site.
+
+## What the rebuild creates
+
+The rebuild performs the following operations in order:
+
+1. Starts DDEV and installs the locked Composer dependencies.
+2. Creates the local private-files directory.
+3. Drops the existing local database when Drupal is already installed.
+4. Installs Drupal CMS using the `drupal_cms_installer` profile.
+5. Applies `recipes/ai_test_harness`.
+6. Imports the recipe configuration and post-install configuration.
+7. Runs Drupal database updates and rebuilds caches.
+8. Verifies every required AI module and the `private://` stream wrapper.
+
+Run the interactive version when you want a confirmation prompt before the
+database is erased:
+
+```bash
+ddev rebuild
+```
+
+## Packaged AI configuration
+
+The harness installs these configuration objects:
+
+- Agent: `harness_chatbot`
+- Assistant: `harness_chatbot`
+- Standard block: `mercury_harness_chatbot`
+- Default chat provider: `grok`
+- Default chat model: `grok-4.5`
+- Grok provider key: `xai_api_key`, sourced from `XAI_API_KEY`
+- OpenAI provider key: `openai_api_key`, sourced from `OPENAI_API_KEY`
+- DeepChat API permission for anonymous and authenticated users
+- DeepChat Canvas component in the Mercury footer
+
+The assistant stores one conversation thread per session and uses the packaged
+AI agent for tool-capable requests. Hosted Grok tools are disabled by default.
+
+## Important administration pages
+
+After signing in, use these paths relative to the DDEV site URL:
+
+| Feature | Path |
+| --- | --- |
+| AI overview | `/admin/config/ai` |
+| AI settings | `/admin/config/ai/settings` |
+| Providers | `/admin/config/ai/providers` |
+| Grok provider | `/admin/config/ai/providers/grok` |
+| OpenAI provider | `/admin/config/ai/providers/openai` |
+| Agents | `/admin/config/ai/tools-automation/agents` |
+| Assistants | `/admin/config/ai/ai-assistant` |
+| API Explorer | `/admin/config/ai/explorers` |
+| Costs | `/admin/config/ai/costs` |
+| Observability | `/admin/config/ai/observability` |
+| Image Studio settings | `/admin/config/ai/image-studio` |
+| New Image Studio session | `/admin/content/ai-image-studio/new` |
+| Block layout | `/admin/structure/block` |
+
+The actual local hostname and port can vary when another service already uses
+ports 80 or 443. Run `ddev describe` to see the active URLs.
+
+## Verify the installation
+
+Check Drupal and DDEV status:
+
+```bash
+ddev describe
+ddev drush status
+```
+
+Verify the required modules:
+
+```bash
+ddev drush pm:list --status=enabled --type=module --format=list \
+  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_provider_openai|grok)$'
+```
+
+Verify the packaged assistant, block, and default provider:
+
+```bash
+ddev drush config:get ai_assistant_api.ai_assistant.harness_chatbot
+ddev drush config:get block.block.mercury_harness_chatbot
+ddev drush config:get ai.settings default_providers.chat
+```
+
+The default provider output should identify `grok` and `grok-4.5`.
+
+### Browser smoke test
+
+1. Sign in as the local administrator.
+2. Open the home page and confirm the chatbot toggle appears in the toolbar
+   area.
+3. Open the chatbot and confirm its first message appears.
+4. Send a short prompt and confirm a Grok response is returned.
+5. Open the Grok provider page and confirm it loads without a PHP error.
+6. Open AI API Explorer and run a chat request.
+7. Confirm the assistant and agent are listed on their administration pages.
+8. Test both a Canvas page and a regular Drupal page.
+
+Live requests require a valid key, provider account access, and model access.
+The site can still be rebuilt and inspected without keys.
+
+## Test a public release from scratch
+
+Use a new directory so existing containers, dependencies, settings, and caches
+cannot hide packaging problems:
+
+```bash
+git clone --branch v1.0.0 --depth 1 \
+  https://github.com/Torneoz/install-torneo-ddev.git install-torneo-v1-test
+cd install-torneo-v1-test
+cp .env.example .env
+ddev rebuild --yes
+```
+
+For the strongest verification, perform this test on a second computer or a
+clean CI runner. Also open the repository and release URL in a signed-out or
+private browser window to confirm public access.
+
+## Day-to-day commands
 
 ```bash
 ddev start
+ddev stop
+ddev restart
+ddev describe
+ddev launch
 ddev drush uli
 ddev drush cache:rebuild
+ddev drush updatedb --yes
+ddev composer install
 ```
+
+Use `ddev drush uli` for a one-time administrator login link when you do not
+want to enter the local password.
+
+## Changing configuration
+
+Changes made only through the Drupal interface are stored in the local database
+and disappear after the next rebuild. To make a setting reproducible:
+
+1. Make and test the change in Drupal.
+2. Export or copy only the intended configuration.
+3. Put recipe-installable configuration in
+   `recipes/ai_test_harness/config/`.
+4. Put configuration that modifies objects created by the Drupal CMS install in
+   `recipes/ai_test_harness/post_install_config/`.
+5. Run `ddev rebuild --yes` and repeat the browser smoke test.
+
+Useful configuration commands:
+
+```bash
+ddev drush config:get CONFIG_NAME
+ddev drush config:export --yes
+ddev drush config:import --yes
+```
+
+Do not commit a broad configuration export without reviewing it for unrelated
+site state, UUIDs, environment-specific values, and secrets.
+
+## Updating dependencies
+
+Install the locked dependency set after cloning or pulling:
+
+```bash
+ddev composer install
+```
+
+To update the primary AI packages within the constraints in `composer.json`:
+
+```bash
+ddev composer update \
+  drupal/ai \
+  drupal/ai_agents \
+  drupal/ai_dashboard \
+  drupal/ai_image_studio \
+  drupal/grok \
+  --with-all-dependencies
+```
+
+Then run:
+
+```bash
+ddev composer validate --strict --no-check-publish
+ddev composer audit
+ddev rebuild --yes
+```
+
+Review and commit `composer.json` and `composer.lock` together. Confirm that all
+patches still apply; remove a patch when the corresponding upstream fix is in
+the installed release.
+
+## Composer patches
+
+The repository currently carries compatibility patches for:
+
+- AI Chatbot Canvas schemas and DeepChat CSRF token refresh behavior
+- The Grok provider configuration form in the renamed module
+- Trash storage validation during the Drupal installer lifecycle
+
+Patches are declared in `composer.json` and applied automatically. Do not edit
+files under `web/modules/contrib`, `web/core`, or `vendor` directly.
+
+## Troubleshooting
+
+### Docker or DDEV cannot start
+
+Confirm the Docker provider is running, then use:
+
+```bash
+ddev poweroff
+ddev start
+```
+
+If standard ports are busy, DDEV selects alternate ports. Use `ddev describe`
+instead of assuming the site runs on port 443.
+
+### The chatbot icon is missing
+
+Check that the block, assistant, module, and theme are present, then rebuild
+caches:
+
+```bash
+ddev drush config:get block.block.mercury_harness_chatbot
+ddev drush config:get ai_assistant_api.ai_assistant.harness_chatbot
+ddev drush pm:list --status=enabled --filter=ai_chatbot
+ddev drush cache:rebuild
+```
+
+Also test a regular Drupal page as well as a Canvas page. The harness packages
+both the standard Mercury block and the Canvas footer component.
+
+### DeepChat reports an invalid `csrf_token`
+
+Clear Drupal caches, reload the page without restoring an old tab, and clear
+the browser's site data if necessary:
+
+```bash
+ddev drush cache:rebuild
+```
+
+The packaged AI patch refreshes the session-bound token before requests. If the
+error remains, verify the installed patch set with `ddev composer install` and
+rebuild from a clean database.
+
+### Grok provider configuration throws `getExtensionInfo()` on null
+
+Run `ddev composer install` to ensure the Grok compatibility patch is applied,
+then rebuild caches. Do not restore an older `grok_ai_provider` directory; the
+current machine name is `grok`.
+
+### A rebuild reports existing recipe configuration
+
+Use the repository's `ddev rebuild --yes` command instead of applying the
+harness recipe manually. It imports pre-existing Canvas and settings objects
+from `post_install_config` after recipe application.
+
+### Provider requests fail
+
+Confirm the key exists in `.env`, restart DDEV so the container receives the
+environment value, and clear caches:
+
+```bash
+ddev restart
+ddev drush cache:rebuild
+ddev exec printenv XAI_API_KEY
+```
+
+The last command prints a secret. Use it only locally and do not paste its
+output into issues, logs, screenshots, or pull requests.
+
+### Reset everything
+
+The supported reset path is:
+
+```bash
+ddev rebuild --yes
+```
+
+This permanently erases the current local Drupal database. Export anything you
+need before running it.
+
+## Security and repository hygiene
+
+- Never commit `.env`, API keys, database dumps, uploaded files, private files,
+  `auth.json`, local settings overrides, or DDEV machine-local configuration.
+- Revoke any credential immediately if it appears in Git history or logs;
+  removing the text from a later commit is not sufficient.
+- Prompt and response body logging is disabled by default. Review observability
+  settings before enabling sensitive logging.
+- This project uses deliberately simple local administrator credentials and is
+  not a production deployment template.
+
+## Contributing and releases
+
+See `CONTRIBUTING.md` for the contribution workflow and `CHANGELOG.md` for
+release history. Before publishing a release:
+
+1. Perform a clean `ddev rebuild --yes`.
+2. Complete the command-line and browser verification above.
+3. Run Composer validation and the security audit.
+4. Confirm the Git working tree contains no secrets or generated artifacts.
+5. Update `CHANGELOG.md`, commit, tag the release, and verify a clean clone of
+   that tag.
+
+GitHub Actions also validates Composer metadata and installs the locked
+dependencies and patches on pushes to `main` and on pull requests.
