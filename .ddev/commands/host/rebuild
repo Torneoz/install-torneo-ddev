@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+## Description: Rebuild the Drupal CMS AI module test harness
+## Usage: rebuild [--yes]
+## Example: ddev rebuild --yes
+
+set -euo pipefail
+
+if [[ "${1:-}" != "--yes" ]]; then
+  read -r -p "Erase the current database and rebuild the test site? [y/N] " reply
+  if [[ ! "$reply" =~ ^[Yy]$ ]]; then
+    echo "Rebuild cancelled."
+    exit 0
+  fi
+fi
+
+ddev start
+ddev composer install --no-interaction
+ddev exec mkdir -p /var/www/html/private
+
+if ddev drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
+  ddev drush sql:drop --yes
+fi
+
+ddev drush site:install drupal_cms_installer \
+  --yes \
+  --site-name="Drupal AI Test Harness" \
+  --account-name=admin \
+  --account-pass=admin
+
+ddev exec vendor/bin/dr recipe /var/www/html/recipes/ai_test_harness
+ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/config --yes
+ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/post_install_config --yes
+ddev drush updatedb --yes
+ddev drush cache:rebuild
+
+enabled_modules="$(ddev drush pm:list --status=enabled --type=module --format=list)"
+for required_module in ai ai_costs ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai grok ai_image_studio; do
+  if ! grep -qx "$required_module" <<< "$enabled_modules"; then
+    echo "Required module was not enabled: $required_module" >&2
+    exit 1
+  fi
+done
+
+private_wrapper="$(ddev drush php:eval "echo \Drupal::service('stream_wrapper_manager')->getViaScheme('private') ? 'ready' : 'missing';")"
+if [[ "$private_wrapper" != "ready" ]]; then
+  echo "Drupal's private:// stream wrapper is not available." >&2
+  exit 1
+fi
+ddev exec test -w /var/www/html/private
+
+echo
+echo "Build complete. Run 'ddev launch' to open the active project URL."
+echo "Initial local login: admin / admin"

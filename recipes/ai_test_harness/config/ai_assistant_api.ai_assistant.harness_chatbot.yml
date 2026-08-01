@@ -1,0 +1,27 @@
+status: true
+dependencies:
+  config:
+    - ai_agents.ai_agent.harness_chatbot
+  module:
+    - ai_agents
+id: harness_chatbot
+label: 'Harness Chatbot'
+description: 'A Grok-backed assistant for the Drupal AI test harness chatbot.'
+system_prompt: ''
+pre_action_prompt: ''
+instructions: ''
+allow_history: session_one_thread
+history_context_length: '10'
+preprompt_instructions: ''
+system_role: ''
+assistant_message: 'How can I help?'
+no_results_message: 'I could not find an answer.'
+error_message: 'I am sorry, the assistant encountered an error. Please try again.'
+specific_error_messages: {  }
+llm_provider: grok
+llm_model: grok-4.5
+llm_configuration: {  }
+actions_enabled: {  }
+roles: {  }
+use_function_calling: true
+ai_agent: harness_chatbot

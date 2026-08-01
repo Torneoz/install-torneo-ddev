@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_chatbot
+active_version: b63ad4629ce2f05a
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: ai_chatbot_block
+        label: 'AI Chatbot'
+        label_display: '0'
+        provider: ai_chatbot
+        ai_assistant: ''
+        bot_name: 'Generic Chatbot'
+        bot_image: /core/misc/druplicon.png
+        use_username: true
+        default_username: User
+        use_avatar: true
+        default_avatar: /core/misc/favicon.ico
+        first_message: 'Hello! How can I help you today?'
+        stream: true
+        toggle_state: remember
+        output_type: markdown
+        show_structured_results: false
+    fallback_metadata:
+      slot_definitions: null
+label: 'AI Chatbot'
+id: block.ai_chatbot_block
+provider: ai_chatbot
+source: block
+source_local_id: ai_chatbot_block

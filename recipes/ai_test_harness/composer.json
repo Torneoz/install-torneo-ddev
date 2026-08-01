@@ -1,0 +1,6 @@
+{
+    "name": "local/ai_test_harness",
+    "description": "Installs the Grok and AI Image Studio test harness.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later"
+}

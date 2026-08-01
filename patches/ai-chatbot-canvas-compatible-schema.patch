@@ -1,0 +1,151 @@
+--- a/modules/ai_chatbot/config/schema/block.settings.ai_chatbot_block.schema.yml
++++ b/modules/ai_chatbot/config/schema/block.settings.ai_chatbot_block.schema.yml
+@@ -1,40 +1,42 @@
+ block.settings.ai_chatbot_block:
+   type: block_settings
++  constraints:
++    FullyValidatable: ~
+   label: Chatbot Block
+   mapping:
+     ai_assistant:
+       type: string
+       label: AI Assistant
+     bot_name:
+       type: text
+       label: Bot Name
+     bot_image:
+       type: string
+       label: Bot Image
+     use_username:
+-      type: integer
++      type: boolean
+       label: Use Username
+     default_username:
+       type: text
+       label: Default Username
+     use_avatar:
+-      type: integer
++      type: boolean
+       label: Use Avatar
+     default_avatar:
+       type: string
+       label: Default Avatar
+     first_message:
+       type: text
+       label: First Message
+     stream:
+-      type: integer
++      type: boolean
+       label: Stream
+     toggle_state:
+       type: string
+       label: Toggle State
+     output_type:
+       type: string
+       label: Output Type
+     show_structured_results:
+       type: boolean
+       label: Show Structured Results
+--- a/modules/ai_chatbot/config/schema/block.settings.ai_deepchat_block.schema.yml
++++ b/modules/ai_chatbot/config/schema/block.settings.ai_deepchat_block.schema.yml
+@@ -1,64 +1,66 @@
+ block.settings.ai_deepchat_block:
+   type: block_settings
++  constraints:
++    FullyValidatable: ~
+   label: DeepChat Chatbot Block
+   mapping:
+     ai_assistant:
+       type: string
+       label: AI Assistant
+     bot_name:
+       type: string
+       label: Bot Name
+     bot_image:
+       type: text
+       label: Bot Image
+     use_username:
+-      type: integer
++      type: boolean
+       label: Use Username
+     default_username:
+       type: text
+       label: Default Username
+     use_avatar:
+-      type: integer
++      type: boolean
+       label: Use Avatar
+     default_avatar:
+       type: string
+       label: Default Avatar
+     first_message:
+       type: text
+       label: First Message
+     loading_message:
+       type: text
+       label: Loading Message
+     stream:
+-      type: integer
++      type: boolean
+       label: Stream
+     toggle_state:
+       type: string
+       label: Toggle State
+     width:
+       type: string
+       label: Width
+     height:
+       type: string
+       label: Height
+     placement:
+       type: string
+       label: Placement
+     show_structured_results:
+       type: boolean
+       label: Show Structured Results
+     show_copy_icon:
+       type: boolean
+       label: Show Copy Icon
+     collapse_minimal:
+       type: boolean
+       label: Collapse Minimal
+     style_file:
+       type: string
+       label: Style File
+     verbose_mode:
+       type: boolean
+       label: Verbose Mode
+     expansion_method:
+       type: string
+       label: Expansion Method
+--- a/modules/ai_chatbot/src/Plugin/Block/ChatFormBlock.php
++++ b/modules/ai_chatbot/src/Plugin/Block/ChatFormBlock.php
+@@ -80,6 +80,6 @@ class ChatFormBlock extends BlockBase implements ContainerFactoryPluginInterface {
+   public function defaultConfiguration() {
+     return [
+-      'ai_assistant' => NULL,
++      'ai_assistant' => '',
+       'bot_name' => 'Generic Chatbot',
+       'bot_image' => '/core/misc/druplicon.png',
+       'use_username' => TRUE,
+--- a/modules/ai_chatbot/src/Plugin/Block/DeepChatFormBlock.php
++++ b/modules/ai_chatbot/src/Plugin/Block/DeepChatFormBlock.php
+@@ -157,6 +157,6 @@ class DeepChatFormBlock extends BlockBase implements ContainerFactoryPluginInterface {
+   public function defaultConfiguration() {
+     return [
+-      'ai_assistant' => NULL,
++      'ai_assistant' => '',
+       'bot_name' => 'Assistant',
+       'bot_image' => '/modules/contrib/ai/modules/ai_chatbot/assets/ai-icon-gradient.svg',
+       'use_username' => FALSE,
+--- a/modules/ai_chatbot/js/deepchat-init.js
++++ b/modules/ai_chatbot/js/deepchat-init.js
+@@ -131,7 +131,7 @@
+         // We create a session when the first message is sent.
+         deepchatElement.requestInterceptor = async (request) => {
+           // If a session does not exist, we need to set one and get a new csrf.
+-          if (drupalSettings.ai_deepchat.session_exists === false && !Drupal.behaviors.deepChatToggle.csrfToken) {
++          if (!Drupal.behaviors.deepChatToggle.csrfToken) {
+             // Get the session and csrf token.
+             if (!Drupal.behaviors.deepChatToggle.csrfToken) {
+               Drupal.behaviors.deepChatToggle.csrfToken = await Drupal.behaviors.deepChatToggle.getSession();

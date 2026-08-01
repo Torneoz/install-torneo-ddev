@@ -1,0 +1,47 @@
+prompt_logging: false
+prompt_logging_tags: ''
+default_providers:
+  chat:
+    provider_id: grok
+    model_id: grok-4.5
+  chat_with_complex_json:
+    provider_id: grok
+    model_id: grok-4.5
+  chat_with_image_vision:
+    provider_id: grok
+    model_id: grok-4.5
+  chat_with_structured_response:
+    provider_id: grok
+    model_id: grok-4.5
+  chat_with_tools:
+    provider_id: grok
+    model_id: grok-4.5
+  image_classification:
+    provider_id: grok
+    model_id: grok-4.5
+  image_to_image:
+    provider_id: grok
+    model_id: grok-imagine-image-quality
+  image_to_video:
+    provider_id: grok
+    model_id: grok-imagine-video-1.5
+  moderation:
+    provider_id: grok
+    model_id: grok-4.5
+  speech_to_text:
+    provider_id: grok
+    model_id: xai-stt
+  text_to_image:
+    provider_id: grok
+    model_id: grok-imagine-image-quality
+  text_to_speech:
+    provider_id: grok
+    model_id: eve
+  text_to_video:
+    provider_id: grok
+    model_id: grok-imagine-video-1.5
+default_vdb_provider: ''
+request_timeout: 60
+allowed_hosts: {  }
+allowed_hosts_rewrite_links: false
+global_guardrails: {  }

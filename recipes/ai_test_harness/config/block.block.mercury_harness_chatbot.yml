@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - ai_assistant_api.ai_assistant.harness_chatbot
+  module:
+    - ai_chatbot
+  theme:
+    - mercury
+id: mercury_harness_chatbot
+theme: mercury
+region: footer
+weight: 0
+provider: null
+plugin: ai_deepchat_block
+settings:
+  id: ai_deepchat_block
+  label: 'Harness Chatbot'
+  label_display: '0'
+  provider: ai_chatbot
+  ai_assistant: harness_chatbot
+  bot_name: 'Harness Assistant'
+  bot_image: /modules/contrib/ai/modules/ai_chatbot/assets/ai-icon-gradient.svg
+  use_username: false
+  default_username: ''
+  use_avatar: false
+  default_avatar: ''
+  first_message: 'Hello! How can I help you with the Drupal AI test harness?'
+  loading_message: 'Thinking…'
+  stream: false
+  toggle_state: remember
+  width: 500px
+  height: 500px
+  placement: toolbar
+  show_structured_results: false
+  show_copy_icon: true
+  collapse_minimal: true
+  style_file: 'module:ai_chatbot:toolbar.yml'
+  verbose_mode: false
+  expansion_method: expand
+visibility: {  }

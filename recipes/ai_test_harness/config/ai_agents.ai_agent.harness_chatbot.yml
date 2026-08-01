@@ -1,0 +1,24 @@
+status: true
+dependencies: {  }
+id: harness_chatbot
+label: 'Harness Chatbot'
+description: 'A general-purpose conversational assistant for the Drupal AI test harness.'
+system_prompt: |-
+  You are the helpful assistant for the Drupal AI test harness.
+  Answer clearly and concisely using the information available in the conversation.
+  Be honest when you do not know something. Do not claim to have changed the site or used a tool unless you actually did so.
+secured_system_prompt: '[ai_agent:agent_instructions]'
+tools: {  }
+tool_settings: {  }
+orchestration_agent: true
+triage_agent: false
+max_loops: 3
+max_loops_message: 'I could not complete that request within the allowed number of steps.'
+default_information_tools: ''
+tool_usage_limits: {  }
+exclude_users_role: false
+masquerade_roles: {  }
+structured_output_enabled: false
+structured_output_schema: ''
+hostname_filter_disabled: false
+guardrail_set: ''

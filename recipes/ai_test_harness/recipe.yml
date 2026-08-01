@@ -1,0 +1,32 @@
+name: 'AI module test harness'
+description: 'Installs Drupal AI, costs, observability, CKEditor integration, OpenAI and Grok providers, and AI Image Studio.'
+type: recipe
+
+install:
+  - ai
+  - ai_costs
+  - ai_observability
+  - ai_ckeditor
+  - ai_agents
+  - ai_assistant_api
+  - ai_chatbot
+  - ai_dashboard
+  - ai_api_explorer
+  - ai_provider_openai
+  - grok
+  - ai_image_studio
+
+config:
+  actions:
+    ai_provider_openai.settings:
+      simpleConfigUpdate:
+        api_key: openai_api_key
+    grok.settings:
+      simpleConfigUpdate:
+        api_key: xai_api_key
+    user.role.anonymous:
+      grantPermissions:
+        - 'access deepchat api'
+    user.role.authenticated:
+      grantPermissions:
+        - 'access deepchat api'
