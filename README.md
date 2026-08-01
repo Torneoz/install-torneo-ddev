@@ -1,4 +1,4 @@
-# Drupal AI module test harness
+# Torneo AI module test harness
 
 A disposable, reproducible Drupal CMS site for testing the Drupal AI ecosystem
 with OpenAI and xAI Grok. The project packages the modules, provider defaults,
