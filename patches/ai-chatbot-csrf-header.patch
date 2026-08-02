@@ -1,0 +1,57 @@
+--- a/modules/ai_chatbot/ai_chatbot.routing.yml
++++ b/modules/ai_chatbot/ai_chatbot.routing.yml
+@@ -20,7 +20,7 @@ ai_chatbot.api:
+     _format: json
+   requirements:
+     _permission: 'access deepchat api'
+-    _csrf_token: 'TRUE'
++    _csrf_request_header_token: 'TRUE'
+     _method: POST
+ ai_chatbot.session:
+   path: '/api/deepchat/session'
+--- a/modules/ai_chatbot/ai_chatbot.libraries.yml
++++ b/modules/ai_chatbot/ai_chatbot.libraries.yml
+@@ -17,5 +17,6 @@ chat-print:
+     - core/once
+ deepchat:
++  version: 1.4.5-csrf-header-1
+   js:
+     deepchat/deepchat.bundle.js:
+       attributes: { type: module }
+--- a/modules/ai_chatbot/src/Controller/DeepChatApi.php
++++ b/modules/ai_chatbot/src/Controller/DeepChatApi.php
+@@ -363,7 +363,9 @@ class DeepChatApi extends ControllerBase {
+     }
+     // Set a session variable.
+     $session->set('deepchat', 'true');
+-    return new Response($this->csrfTokenGenerator->get("api/deepchat"));
++    return new Response($this->csrfTokenGenerator->get(
++      \Drupal\Core\Access\CsrfRequestHeaderAccessCheck::TOKEN_KEY,
++    ));
+   }
+ 
+   /**
+--- a/modules/ai_chatbot/js/deepchat-init.js
++++ b/modules/ai_chatbot/js/deepchat-init.js
+@@ -136,10 +136,8 @@
+             if (!Drupal.behaviors.deepChatToggle.csrfToken) {
+               Drupal.behaviors.deepChatToggle.csrfToken = await Drupal.behaviors.deepChatToggle.getSession();
+             }
+-            // Remove the current ?token= from the connect url.
+-            let newUrl = deepchatElement.connect.url.replace(/\?token=[^&]+/, '');
+-            // Add the new csrf token.
+-            deepchatElement.connect.url = newUrl + '?token=' + Drupal.behaviors.deepChatToggle.csrfToken;
+           }
++          request.headers = request.headers || {};
++          request.headers['X-CSRF-Token'] = Drupal.behaviors.deepChatToggle.csrfToken;
+ 
+           if (!drupalSettings.ai_deepchat.verbose_mode && drupalSettings.ai_deepchat.loading_message) {
+             deepchatElement.addMessage({
+@@ -149,4 +147,5 @@
+               html: '<div class="deep-chat-temporary-message"><span>' + drupalSettings.ai_deepchat.loading_message + '</span></div>',
+             });
+           }
++          return request;
+         }
+ 
+         deepchatElement.addEventListener('render', async () => {

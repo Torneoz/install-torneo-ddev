@@ -23,6 +23,7 @@
         "drupal/ai_dashboard": "^1",
         "drupal/ai_image_alt_text": "^1",
         "drupal/ai_image_studio": "^1.0@beta",
+        "drupal/ai_media_image": "^1.0@alpha",
         "drupal/ai_provider_amazeeio": "^1.2.7",
         "drupal/ai_provider_anthropic": "^1.1",
         "drupal/ai_provider_openai": "^1.1",
@@ -128,7 +129,8 @@
     "extra": {
         "patches": {
             "drupal/ai": {
-                "Make AI Chatbot block settings compatible with Drupal Canvas": "patches/ai-chatbot-canvas-compatible-schema.patch"
+                "Make AI Chatbot block settings compatible with Drupal Canvas": "patches/ai-chatbot-canvas-compatible-schema.patch",
+                "Send DeepChat CSRF tokens in the request header": "patches/ai-chatbot-csrf-header.patch"
             },
             "drupal/grok": {
                 "Fix undefined module extension list in the provider configuration form": "patches/grok-alpha9-module-list.patch"

@@ -149,3 +149,20 @@
              // Get the session and csrf token.
              if (!Drupal.behaviors.deepChatToggle.csrfToken) {
                Drupal.behaviors.deepChatToggle.csrfToken = await Drupal.behaviors.deepChatToggle.getSession();
+@@ -263,5 +263,6 @@
+         fetch(drupalSettings.path.baseUrl + 'api/deepchat/session', {
+           method: 'POST',
++          credentials: 'same-origin',
+         }).then(response => {
+           if (!response.ok) {
+             resolve({ error: 'Failed to set session.' });
+--- a/modules/ai_chatbot/src/Plugin/Block/DeepChatFormBlock.php
++++ b/modules/ai_chatbot/src/Plugin/Block/DeepChatFormBlock.php
+@@ -718,6 +718,7 @@ class DeepChatFormBlock extends BlockBase implements ContainerFactoryPluginInterface {
+     $deepchat['connect'] = [
+       'url' => $url->toString(),
+       'method' => 'POST',
++      'credentials' => 'same-origin',
+       'stream' => $this->isStreamingSupported(),
+       'additionalBodyProps' => [
+         'assistant_id' => $this->configuration['ai_assistant'],
