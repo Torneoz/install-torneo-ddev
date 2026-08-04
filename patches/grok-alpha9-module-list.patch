@@ -1,5 +1,0 @@
---- a/src/Form/GrokAiProviderConfigForm.php
-+++ b/src/Form/GrokAiProviderConfigForm.php
-@@ -503 +503 @@ final class GrokAiProviderConfigForm extends ConfigFormBase {
--    $module_info = $module_list->getExtensionInfo('grok');
-+    $module_info = $this->getModuleList()->getExtensionInfo('grok');

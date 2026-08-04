@@ -16,6 +16,9 @@ fi
 
 ddev start
 ddev composer install --no-interaction
+# Restart PHP after dependency installation so web requests cannot retain stale
+# contributed-module class or plugin discovery state across package updates.
+ddev restart
 ddev exec mkdir -p /var/www/html/private
 
 if ddev drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
@@ -28,14 +31,25 @@ ddev drush site:install drupal_cms_installer \
   --account-name=admin \
   --account-pass=admin
 
+# Drupal CMS installs a placeholder Canvas home page. Remove only that fresh
+# placeholder so the harness recipe can import its packaged /home page without
+# creating a duplicate path alias.
+ddev drush php:eval '$storage = \Drupal::entityTypeManager()->getStorage("canvas_page"); $ids = $storage->getQuery()->accessCheck(FALSE)->condition("title", "Home")->execute(); if ($ids) { $storage->delete($storage->loadMultiple($ids)); }'
+
 ddev exec vendor/bin/dr recipe /var/www/html/recipes/ai_test_harness
 ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/config --yes
 ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/post_install_config --yes
 ddev drush updatedb --yes
 ddev drush cache:rebuild
 
+ai_json_schema_ready="$(ddev drush php:eval 'echo class_exists("Drupal\\ai\\Element\\AiJsonSchema") ? "ready" : "missing";')"
+if [[ "$ai_json_schema_ready" != "ready" ]]; then
+  echo "AI JSON Schema render element is not autoloadable after rebuild." >&2
+  exit 1
+fi
+
 enabled_modules="$(ddev drush pm:list --status=enabled --type=module --format=list)"
-for required_module in ai ai_costs ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai grok ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image; do
+for required_module in ai ai_costs ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai grok gemini_provider ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image; do
   if ! grep -qx "$required_module" <<< "$enabled_modules"; then
     echo "Required module was not enabled: $required_module" >&2
     exit 1

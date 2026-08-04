@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8acf292c6082b4a74faf10295c3169b6",
+    "content-hash": "6bdf6f2c4f9ab119bff8db11334c5d7d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -823,54 +823,6 @@
             "time": "2024-05-06T16:37:16+00:00"
         },
         {
-            "name": "cweagans/composer-patches",
-            "version": "1.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
-                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "composer/composer": "~1.0 || ~2.0",
-                "phpunit/phpunit": "~4.6"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "cweagans\\Composer\\Patches"
-            },
-            "autoload": {
-                "psr-4": {
-                    "cweagans\\Composer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cameron Eagans",
-                    "email": "me@cweagans.net"
-                }
-            ],
-            "description": "Provides a way to patch Composer packages.",
-            "support": {
-                "issues": "https://github.com/cweagans/composer-patches/issues",
-                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
-            },
-            "time": "2022-12-20T22:53:13+00:00"
-        },
-        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1499,17 +1451,17 @@
         },
         {
             "name": "drupal/ai_image_studio",
-            "version": "1.0.0-beta1",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_image_studio.git",
-                "reference": "1.0.0-beta1"
+                "reference": "1.0.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_image_studio-1.0.0-beta1.zip",
-                "reference": "1.0.0-beta1",
-                "shasum": "57b3d5607c1cabfa143e85d873d33d06cce4d7bf"
+                "url": "https://ftp.drupal.org/files/projects/ai_image_studio-1.0.0-beta3.zip",
+                "reference": "1.0.0-beta3",
+                "shasum": "88ca7ac940c0a6b2c56b4a06eda3f51190e5490b"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -1525,8 +1477,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta1",
-                    "datestamp": "1785565122",
+                    "version": "1.0.0-beta3",
+                    "datestamp": "1785809532",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -1597,17 +1549,17 @@
         },
         {
             "name": "drupal/ai_provider_amazeeio",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_provider_amazeeio.git",
-                "reference": "1.3.3"
+                "reference": "1.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.3.3.zip",
-                "reference": "1.3.3",
-                "shasum": "f68db357313bc8a7e279d165531c88f9ae940ad0"
+                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.3.4.zip",
+                "reference": "1.3.4",
+                "shasum": "789039b901cf7251a8aebd35620081ca8e6ae236"
             },
             "require": {
                 "drupal/ai": "^1.3",
@@ -1622,8 +1574,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.3.3",
-                    "datestamp": "1784130248",
+                    "version": "1.3.4",
+                    "datestamp": "1785575176",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1976,17 +1928,17 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "7.1.2",
+            "version": "7.1.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
-                "reference": "7.1.2"
+                "reference": "7.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-7.1.2.zip",
-                "reference": "7.1.2",
-                "shasum": "44aaa7ba5c95721cbe6ec25bcef0267ec6a9ad15"
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-7.1.3.zip",
+                "reference": "7.1.3",
+                "shasum": "802c4a2823c5393b78750a540ac4d2e2c95767e5"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11",
@@ -1995,8 +1947,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "7.1.2",
-                    "datestamp": "1779237916",
+                    "version": "7.1.3",
+                    "datestamp": "1784943855",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2106,17 +2058,17 @@
         },
         {
             "name": "drupal/byte_theme",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/byte_theme.git",
-                "reference": "1.0.2"
+                "reference": "1.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/byte_theme-1.0.2.zip",
-                "reference": "1.0.2",
-                "shasum": "d93d2f3e1670fed3da6fa484758c3ce4d0251d3c"
+                "url": "https://ftp.drupal.org/files/projects/byte_theme-1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": "ae5d329ac2bfd7799a2bbde8d34a1aaa310961a4"
             },
             "require": {
                 "drupal/canvas": "*",
@@ -2132,8 +2084,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "1.0.2",
-                    "datestamp": "1773939323",
+                    "version": "1.0.3",
+                    "datestamp": "1785504275",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2182,17 +2134,17 @@
         },
         {
             "name": "drupal/canvas",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/canvas.git",
-                "reference": "1.8.0"
+                "reference": "1.9.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/canvas-1.8.0.zip",
-                "reference": "1.8.0",
-                "shasum": "0a1cc04ad39259ec160051511dbad7876d42a35e"
+                "url": "https://ftp.drupal.org/files/projects/canvas-1.9.0.zip",
+                "reference": "1.9.0",
+                "shasum": "9429e1003c54c61b06b223df40c707cdfe0fb7d4"
             },
             "require": {
                 "drupal/core": "^11.3",
@@ -2203,12 +2155,18 @@
                 "drupal/ai": "^1.2.1",
                 "drupal/ai_agents": "^1.2",
                 "drupal/ai_agents_test": "^1.0@alpha",
+                "drupal/canvas_ai": "*",
                 "drupal/coder": "^8",
+                "drupal/consumers": "*",
+                "drupal/custom_elements": "^3.4",
                 "drupal/jsonapi_menu_items": "^1.2.8",
+                "drupal/lupus_ce_renderer": "*",
+                "drupal/lupus_decoupled": "^1.5",
+                "drupal/lupus_decoupled_ce_api": "*",
                 "drupal/metatag": "^2.1",
                 "drupal/pathauto": "^1.13",
                 "drupal/search_api": "^1",
-                "drupal/simple_oauth": "^6",
+                "drupal/simple_oauth": "^6.1.0",
                 "drupal/tmgmt": "^1.18",
                 "drush/drush": "^13",
                 "jangregor/phpstan-prophecy": "2.3.0",
@@ -2222,8 +2180,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.8.0",
-                    "datestamp": "1783564593",
+                    "version": "1.9.0",
+                    "datestamp": "1785336826",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3129,17 +3087,17 @@
         },
         {
             "name": "drupal/ctools",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ctools.git",
-                "reference": "4.1.0"
+                "reference": "4.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ctools-4.1.0.zip",
-                "reference": "4.1.0",
-                "shasum": "69f5889cf557df9e55519390e6a95cfa31b67874"
+                "url": "https://ftp.drupal.org/files/projects/ctools-4.1.1.zip",
+                "reference": "4.1.1",
+                "shasum": "a04db6a0b6a22ddcfb9fe8f16955d55297b5da1c"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10 || ^11"
@@ -3147,8 +3105,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.1.0",
-                    "datestamp": "1718144949",
+                    "version": "4.1.1",
+                    "datestamp": "1784926417",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4110,6 +4068,60 @@
             }
         },
         {
+            "name": "drupal/gemini_provider",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gemini_provider.git",
+                "reference": "1.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/gemini_provider-1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": "51fd7744b52cffdc163a732872fca0e420e1c572"
+            },
+            "require": {
+                "drupal/ai": "^1.2",
+                "drupal/core": "^10 || ^11",
+                "drupal/key": "*",
+                "google-gemini-php/client": "^2.7"
+            },
+            "require-dev": {
+                "drush/drush": "^12 || ^13"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.1",
+                    "datestamp": "1774173695",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jibla",
+                    "homepage": "https://www.drupal.org/user/1013184"
+                },
+                {
+                    "name": "lekso surameli",
+                    "homepage": "https://www.drupal.org/user/3709459"
+                }
+            ],
+            "description": "Gemini provider for AI module.",
+            "homepage": "https://www.drupal.org/project/gemini_provider",
+            "support": {
+                "source": "https://git.drupalcode.org/project/gemini_provider"
+            }
+        },
+        {
             "name": "drupal/gin",
             "version": "5.0.15",
             "source": {
@@ -4375,27 +4387,27 @@
         },
         {
             "name": "drupal/grok",
-            "version": "1.0.0-alpha9",
+            "version": "1.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/grok.git",
-                "reference": "1.0.0-alpha9"
+                "reference": "1.0.0-beta2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/grok-1.0.0-alpha9.zip",
-                "reference": "1.0.0-alpha9",
-                "shasum": "c72d377dd88ad60a44af2947835a1083e3d09112"
+                "url": "https://ftp.drupal.org/files/projects/grok-1.0.0-beta2.zip",
+                "reference": "1.0.0-beta2",
+                "shasum": "adfb50020d92181e2466959fe248e218bf7d4e58"
             },
             "require": {
                 "drupal/ai": "^1.4",
-                "drupal/core": "^10.3 || ^11",
+                "drupal/core": "^10.6 || ^11.2",
                 "drupal/key": "^1.22",
                 "php": ">=8.1"
             },
             "require-dev": {
-                "drupal/coder": "^8.3",
-                "phpunit/phpunit": "^10.5 || ^11.5"
+                "drupal/coder": "^8.3.31",
+                "phpunit/phpunit": "^9.6 || ^11.5"
             },
             "suggest": {
                 "drupal/media_library_form_element": "Provides the visual Drupal Media Library selector in image-based AI Explorers."
@@ -4403,8 +4415,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-alpha9",
-                    "datestamp": "1785546850",
+                    "version": "1.0.0-beta2",
+                    "datestamp": "1785729715",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -6642,17 +6654,17 @@
         },
         {
             "name": "drupal/trash",
-            "version": "3.0.30",
+            "version": "3.0.31",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/trash.git",
-                "reference": "3.0.30"
+                "reference": "3.0.31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/trash-3.0.30.zip",
-                "reference": "3.0.30",
-                "shasum": "7b076dac56e885730f2038b569e5d417813838bf"
+                "url": "https://ftp.drupal.org/files/projects/trash-3.0.31.zip",
+                "reference": "3.0.31",
+                "shasum": "c63bcc569e9831bc8b40289184fcc63a05986783"
             },
             "require": {
                 "drupal/core": "^10.3 | ^11"
@@ -6671,8 +6683,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.30",
-                    "datestamp": "1784218555",
+                    "version": "3.0.31",
+                    "datestamp": "1785790736",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7195,6 +7207,86 @@
             "time": "2018-01-19T23:11:36+00:00"
         },
         {
+            "name": "google-gemini-php/client",
+            "version": "2.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google-gemini-php/client.git",
+                "reference": "d61ebe8e8f7acc2aa66ce2e8a57c23bf32e1e340"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google-gemini-php/client/zipball/d61ebe8e8f7acc2aa66ce2e8a57c23bf32e1e340",
+                "reference": "d61ebe8e8f7acc2aa66ce2e8a57c23bf32e1e340",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1.0",
+                "php-http/discovery": "^1.19.2",
+                "psr/http-client-implementation": "*",
+                "psr/http-factory-implementation": "*"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.8.1",
+                "guzzlehttp/psr7": "^2.6.2",
+                "laravel/pint": "^1.18.1",
+                "mockery/mockery": "^1.6.7",
+                "pestphp/pest": "^2.32.3",
+                "phpstan/phpstan": "^2.1.32"
+            },
+            "suggest": {
+                "ext-fileinfo": "Reads upload file size and mime type if not provided"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Gemini.php"
+                ],
+                "psr-4": {
+                    "Gemini\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fatih AYDIN",
+                    "email": "aydinfatih52@gmail.com"
+                }
+            ],
+            "description": "Gemini API is a supercharged PHP API client that allows you to interact with the Gemini API",
+            "keywords": [
+                "Gemini",
+                "banana",
+                "client",
+                "gemini-pro",
+                "google",
+                "language",
+                "natural",
+                "nlp",
+                "php",
+                "processing",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/google-gemini-php/client/issues",
+                "source": "https://github.com/google-gemini-php/client/tree/2.7.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Plytas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/aydinfatih",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-12-29T17:51:16+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "7.15.2",
             "source": {
@@ -7640,16 +7732,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.8.3",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "1902f60f984235023acbe03db6ad614a37b3c3e7"
+                "reference": "5703d83ba3da3b2e356a5fedc848ed6d8ffb6529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/1902f60f984235023acbe03db6ad614a37b3c3e7",
-                "reference": "1902f60f984235023acbe03db6ad614a37b3c3e7",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/5703d83ba3da3b2e356a5fedc848ed6d8ffb6529",
+                "reference": "5703d83ba3da3b2e356a5fedc848ed6d8ffb6529",
                 "shasum": ""
             },
             "require": {
@@ -7686,7 +7778,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.9-dev"
+                    "dev-main": "2.10-dev"
                 }
             },
             "autoload": {
@@ -7743,7 +7835,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-12T15:29:16+00:00"
+            "time": "2026-08-03T13:42:31+00:00"
         },
         {
             "name": "league/config",
@@ -9576,16 +9668,16 @@
         },
         {
             "name": "seld/phar-utils",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/phar-utils.git",
-                "reference": "ea2f4014f163c1be4c601b9b7bd6af81ba8d701c"
+                "reference": "990bbd0e92caa216d52eca0935f6e35e589bfaa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/ea2f4014f163c1be4c601b9b7bd6af81ba8d701c",
-                "reference": "ea2f4014f163c1be4c601b9b7bd6af81ba8d701c",
+                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/990bbd0e92caa216d52eca0935f6e35e589bfaa5",
+                "reference": "990bbd0e92caa216d52eca0935f6e35e589bfaa5",
                 "shasum": ""
             },
             "require": {
@@ -9618,9 +9710,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/phar-utils/issues",
-                "source": "https://github.com/Seldaek/phar-utils/tree/1.2.1"
+                "source": "https://github.com/Seldaek/phar-utils/tree/1.2.2"
             },
-            "time": "2022-08-31T10:31:18+00:00"
+            "time": "2026-08-01T12:48:55+00:00"
         },
         {
             "name": "seld/signal-handler",

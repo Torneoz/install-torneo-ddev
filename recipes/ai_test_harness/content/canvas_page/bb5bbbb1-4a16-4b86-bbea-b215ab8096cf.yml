@@ -1,0 +1,193 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: bb5bbbb1-4a16-4b86-bbea-b215ab8096cf
+  default_langcode: en
+default:
+  revision_user:
+    - target_id: 1
+  status:
+    - value: true
+  owner:
+    - target_id: 1
+  title:
+    - value: Home
+  components:
+    -
+      uuid: 5eb3cda4-eb09-4307-9a5a-ec511e13446d
+      component_id: sdc.mercury.cta
+      inputs:
+        heading_text: 'Build and test Drupal AI integrations'
+        level: 1
+        text: 'A reproducible Drupal environment for exploring AI providers, conversational assistants, image and video generation, agents, and developer tooling.'
+        text_align: center
+        background_color: primary
+        overlay_opacity: 20%
+    -
+      parent_uuid: 5eb3cda4-eb09-4307-9a5a-ec511e13446d
+      slot: actions
+      uuid: 87452e15-cfa5-47fe-a4c5-b382aed403a6
+      component_id: sdc.mercury.button
+      inputs:
+        variant: primary-inverted
+        size: large
+        label: 'Open AI API Explorer'
+        href: /admin/config/ai/explorers
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+    -
+      parent_uuid: 5eb3cda4-eb09-4307-9a5a-ec511e13446d
+      slot: actions
+      uuid: 3ade460e-02f0-4360-a857-96a45c7ff1a7
+      component_id: sdc.mercury.button
+      inputs:
+        variant: secondary-inverted
+        size: large
+        label: 'View AI configuration'
+        href: /admin/config/ai
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+    -
+      uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      component_id: sdc.mercury.section
+      inputs:
+        width: 90%
+        columns: 33-33-33
+        mobile_columns: '1'
+        margin_block_start: '64'
+        margin_block_end: '64'
+        padding_block_start: '0'
+        padding_block_end: '0'
+        section_header: true
+        section_footer: false
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: header_slot
+      uuid: 13bb5e04-d63e-45c9-b04f-e1c8a1984357
+      component_id: sdc.mercury.heading
+      inputs:
+        heading_text: 'Projects in this stack'
+        level: 2
+        text_size: heading-responsive-4xl
+        text_color: default
+        align: center
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: header_slot
+      uuid: 547d83de-f5b0-45d4-bbcb-30b6207e0d71
+      component_id: sdc.mercury.text
+      inputs:
+        text: '<p>Explore the provider integrations, creative tools, and development environment that make up the Torneoz Drupal AI stack.</p>'
+        text_size: text-lg
+        text_color: default
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: bdb29820-fc4a-4a8e-849b-99c704796297
+      component_id: sdc.mercury.card-icon
+      inputs:
+        tile_size: '4:3'
+        background_color: background
+        border_radius: large
+        icon: brain
+        icon_size: extra-large
+        icon_align: left
+        icon_style: primary_background
+        url: 'https://www.drupal.org/project/grok'
+        text: 'Grok Integration'
+        description: '<p>Connect Drupal AI to xAI models for chat, vision, image and video generation, classification, moderation, speech, and hosted tools.</p>'
+        text_align: left
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: a2ce507d-d008-4b4a-b69e-8f10ab4133f5
+      component_id: sdc.mercury.card-icon
+      inputs:
+        tile_size: '4:3'
+        background_color: background
+        border_radius: large
+        icon: image-square
+        icon_size: extra-large
+        icon_align: left
+        icon_style: primary_background
+        url: 'https://www.drupal.org/project/ai_image_studio'
+        text: 'AI Image Studio'
+        description: '<p>Generate, refine, compare, and publish AI images and videos through a conversational Drupal workspace with usage and cost metadata.</p>'
+        text_align: left
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: 30ca0888-873f-4ad6-8c59-45604ca98883
+      component_id: sdc.mercury.card-icon
+      inputs:
+        tile_size: '4:3'
+        background_color: background
+        border_radius: large
+        icon: flask
+        icon_size: extra-large
+        icon_align: left
+        icon_style: primary_background
+        url: 'https://github.com/Torneoz/install-torneo-ddev'
+        text: 'Drupal AI Test Harness'
+        description: '<p>Rebuild a complete Drupal CMS AI environment with packaged providers, assistants, agents, chatbot configuration, API Explorer, and diagnostics.</p>'
+        text_align: left
+    -
+      uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      component_id: sdc.mercury.cta
+      inputs:
+        heading_text: 'Ready to test a model?'
+        level: 2
+        text: 'Add your provider credentials locally, choose an operation in AI API Explorer, or start creating in AI Image Studio.'
+        text_align: center
+        background_color: muted
+        overlay_opacity: 20%
+    -
+      parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      slot: actions
+      uuid: 12f7b056-5d60-4dc7-b196-ce03f9dca16f
+      component_id: sdc.mercury.button
+      inputs:
+        variant: primary
+        size: large
+        label: 'Open API Explorer'
+        href: /admin/config/ai/explorers
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+    -
+      parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      slot: actions
+      uuid: 24d07b36-24fb-4e6c-ad16-d67187712420
+      component_id: sdc.mercury.button
+      inputs:
+        variant: secondary
+        size: large
+        label: 'Start Image Studio'
+        href: /admin/content/ai-image-studio/new
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+    -
+      parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      slot: actions
+      uuid: f2645fd2-983a-40d1-a31e-e32ac4dcaed6
+      component_id: sdc.mercury.button
+      inputs:
+        variant: secondary
+        size: large
+        label: 'Manage providers'
+        href: /admin/config/ai/providers
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+  path:
+    -
+      alias: /home
+      langcode: en

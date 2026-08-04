@@ -17,8 +17,8 @@ requests. Keep them only in the ignored `.env` file.
 - Manage Drupal and PHP dependencies with Composer; do not commit `vendor/`,
   Drupal core, contributed extensions, generated site files, or credentials.
 - Keep harness configuration in `recipes/ai_test_harness`.
-- Add compatibility changes to contributed projects as Composer patches in
-  `patches/`; do not edit installed contributed code directly.
+- Do not edit installed contributed code directly. Update the upstream
+  dependency or contribute fixes to its project instead.
 - Run `ddev rebuild --yes` before submitting a pull request.
 - Commit `composer.json` and `composer.lock` together after dependency changes.
 

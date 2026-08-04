@@ -18,6 +18,7 @@ This repository is an AI integration harness. It does not install
 - AI CKEditor integration
 - OpenAI Provider
 - Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
+- Gemini Provider
 - AI Image Studio
 - AI Media Image
 - AI Image Alt Text and AI Image Bulk Alt Text
@@ -25,8 +26,7 @@ This repository is an AI integration harness. It does not install
 - Environment-backed Drupal Key entities for OpenAI and xAI
 - A preconfigured `Harness Chatbot` agent and assistant
 
-Composer installs the exact dependency versions recorded in `composer.lock` and
-automatically applies the compatibility fixes in `patches/`.
+Composer installs the exact dependency versions recorded in `composer.lock`.
 
 ## Requirements
 
@@ -61,6 +61,7 @@ Edit `.env` and add the provider keys you intend to test:
 ```dotenv
 OPENAI_API_KEY=
 XAI_API_KEY=
+GEMINI_API_KEY=
 ```
 
 Never commit `.env`. It is ignored by Git and passed only to the DDEV web
@@ -123,6 +124,7 @@ The harness installs these configuration objects:
 - Default chat model: `grok-4.5`
 - Grok provider key: `xai_api_key`, sourced from `XAI_API_KEY`
 - OpenAI provider key: `openai_api_key`, sourced from `OPENAI_API_KEY`
+- Gemini provider key: `google_gemini_api_key`, sourced from `GEMINI_API_KEY`
 - DeepChat API permission for anonymous and authenticated users
 - DeepChat Canvas component in the Mercury footer
 
@@ -139,6 +141,7 @@ After signing in, use these paths relative to the DDEV site URL:
 | AI settings | `/admin/config/ai/settings` |
 | Providers | `/admin/config/ai/providers` |
 | Grok provider | `/admin/config/ai/providers/grok` |
+| Gemini provider | `/admin/config/ai/providers/gemini` |
 | OpenAI provider | `/admin/config/ai/providers/openai` |
 | Agents | `/admin/config/ai/tools-automation/agents` |
 | Assistants | `/admin/config/ai/ai-assistant` |
@@ -165,7 +168,7 @@ Verify the required modules:
 
 ```bash
 ddev drush pm:list --status=enabled --type=module --format=list \
-  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_media_image|ai_provider_openai|grok)$'
+  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_media_image|ai_provider_openai|gemini_provider|grok)$'
 ```
 
 Verify the packaged assistant, block, and default provider:
@@ -279,20 +282,8 @@ ddev composer audit
 ddev rebuild --yes
 ```
 
-Review and commit `composer.json` and `composer.lock` together. Confirm that all
-patches still apply; remove a patch when the corresponding upstream fix is in
-the installed release.
-
-## Composer patches
-
-The repository currently carries compatibility patches for:
-
-- AI Chatbot Canvas schemas and DeepChat CSRF token refresh behavior
-- The Grok provider configuration form in the renamed module
-- Trash storage validation during the Drupal installer lifecycle
-
-Patches are declared in `composer.json` and applied automatically. Do not edit
-files under `web/modules/contrib`, `web/core`, or `vendor` directly.
+Review and commit `composer.json` and `composer.lock` together. Do not edit files
+under `web/modules/contrib`, `web/core`, or `vendor` directly.
 
 ## Troubleshooting
 
@@ -332,15 +323,13 @@ the browser's site data if necessary:
 ddev drush cache:rebuild
 ```
 
-The packaged AI patch refreshes the session-bound token before requests. If the
-error remains, verify the installed patch set with `ddev composer install` and
-rebuild from a clean database.
+If the error remains after clearing site data, update the AI module, run
+`ddev composer install`, and rebuild from a clean database.
 
 ### Grok provider configuration throws `getExtensionInfo()` on null
 
-Run `ddev composer install` to ensure the Grok compatibility patch is applied,
-then rebuild caches. Do not restore an older `grok_ai_provider` directory; the
-current machine name is `grok`.
+Update the Grok module and rebuild caches. Do not restore an older
+`grok_ai_provider` directory; the current machine name is `grok`.
 
 ### A rebuild reports existing recipe configuration
 
@@ -397,4 +386,4 @@ release history. Before publishing a release:
    that tag.
 
 GitHub Actions also validates Composer metadata and installs the locked
-dependencies and patches on pushes to `main` and on pull requests.
+dependencies on pushes to `main` and on pull requests.

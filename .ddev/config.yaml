@@ -3,6 +3,8 @@ type: drupal11
 docroot: web
 php_version: "8.4"
 webserver_type: nginx-fpm
+webimage_extra_packages:
+  - ffmpeg
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []

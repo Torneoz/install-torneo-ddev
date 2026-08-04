@@ -14,6 +14,7 @@ install:
   - ai_api_explorer
   - ai_provider_openai
   - grok
+  - gemini_provider
   - ai_image_alt_text
   - ai_image_bulk_alt_text
   - ai_image_studio
@@ -27,6 +28,12 @@ config:
     grok.settings:
       simpleConfigUpdate:
         api_key: xai_api_key
+    gemini_provider.settings:
+      simpleConfigUpdate:
+        api_key: google_gemini_api_key
+    system.site:
+      simpleConfigUpdate:
+        page.front: /home
     user.role.anonymous:
       grantPermissions:
         - 'access deepchat api'
