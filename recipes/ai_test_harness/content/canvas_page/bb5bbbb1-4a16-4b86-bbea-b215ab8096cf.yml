@@ -70,7 +70,7 @@ default:
       uuid: 13bb5e04-d63e-45c9-b04f-e1c8a1984357
       component_id: sdc.mercury.heading
       inputs:
-        heading_text: 'Projects in this stack'
+        heading_text: 'Torneo AI Projects in this stack'
         level: 2
         text_size: heading-responsive-4xl
         text_color: default

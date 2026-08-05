@@ -28,6 +28,16 @@
   font-weight: 700;
 }
 
+.torneo-project__icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .torneo-project__title {
   margin: 0;
   font-size: clamp(1.5rem, 2vw, 2rem);
@@ -48,6 +58,13 @@
 .torneo-project__description {
   margin: 0.75rem 0 1.5rem;
   line-height: 1.6;
+}
+
+.torneo-project__version {
+  margin-top: 0.5rem;
+  color: color-mix(in srgb, currentColor 65%, transparent);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .torneo-project__footer {
@@ -82,4 +99,3 @@
     grid-template-columns: 1fr;
   }
 }
-

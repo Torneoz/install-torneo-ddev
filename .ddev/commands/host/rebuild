@@ -32,7 +32,7 @@ fi
 
 ddev drush site:install drupal_cms_installer \
   --yes \
-  --site-name="Drupal AI Test Harness" \
+  --site-name="Torneo AI Test Harness" \
   --account-name=admin \
   --account-pass=admin
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\torneo_ai_harness\Plugin\Block;
 
+use Composer\InstalledVersions;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -81,6 +82,7 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
 
       $projects[] = [
         'title' => $definition['title'],
+        'version' => $this->installedVersion($definition['package']),
         'description' => $definition['description'],
         'icon' => $definition['icon'],
         'main_url' => $definition['drupal'] ?? $definition['github'],
@@ -107,8 +109,9 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
     return [
       [
         'title' => 'Grok Integration',
+        'package' => 'drupal/grok',
         'description' => 'Connect Drupal AI to xAI models for chat, vision, image and video generation, classification, moderation, speech, and hosted tools.',
-        'icon' => 'G',
+        'icon' => 'grok',
         'github' => 'https://github.com/Torneoz/grok_ai_provider',
         'drupal' => 'https://www.drupal.org/project/grok',
         'settings' => 'grok.settings_form',
@@ -117,8 +120,9 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
       ],
       [
         'title' => 'AI Image Studio',
+        'package' => 'drupal/ai_image_studio',
         'description' => 'Generate, refine, compare, and publish AI images and videos through a conversational Drupal workspace with usage and cost metadata.',
-        'icon' => 'I',
+        'icon' => 'image',
         'github' => 'https://github.com/Torneoz/ai_image_studio',
         'drupal' => 'https://www.drupal.org/project/ai_image_studio',
         'settings' => 'ai_image_studio.settings',
@@ -126,9 +130,10 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'ui_label' => 'Open Studio',
       ],
       [
-        'title' => 'Drupal AI Test Harness',
+        'title' => 'Torneo AI Test Harness',
+        'package' => 'torneoz/drupal-ai-test-harness',
         'description' => 'Rebuild a complete Drupal CMS AI environment with packaged providers, assistants, agents, chatbot configuration, API Explorer, and diagnostics.',
-        'icon' => 'T',
+        'icon' => 'harness',
         'github' => 'https://github.com/Torneoz/install-torneo-ddev',
         'settings' => 'ai.settings.menu',
         'ui' => 'ai_api_explorer.list_page',
@@ -136,15 +141,17 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
       ],
       [
         'title' => 'AI Costs',
+        'package' => 'drupal/ai_costs',
         'description' => 'Track provider-neutral model pricing, estimate request costs, and record usage metadata across Drupal AI integrations.',
-        'icon' => '$',
+        'icon' => 'costs',
         'github' => 'https://github.com/Torneoz/ai_costs',
         'settings' => 'ai_costs.settings',
       ],
       [
         'title' => 'Grok Collections',
+        'package' => 'drupal/grok_doc',
         'description' => 'Manage xAI Collections, bulk-ingest documents, and explore collection search from Drupal through the Grok provider.',
-        'icon' => 'C',
+        'icon' => 'collections',
         'github' => 'https://github.com/Torneoz/grok_doc',
         'settings' => 'entity.grok_doc_collection.collection',
         'settings_label' => 'Collections',
@@ -153,6 +160,17 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'ui_requires' => 'entity.grok_doc_collection.collection',
       ],
     ];
+  }
+
+  /**
+   * Returns the installed Composer version or a clear availability label.
+   */
+  private function installedVersion(string $package): string {
+    if (!InstalledVersions::isInstalled($package)) {
+      return 'Not installed';
+    }
+
+    return InstalledVersions::getPrettyVersion($package) ?? 'Installed';
   }
 
   /**
