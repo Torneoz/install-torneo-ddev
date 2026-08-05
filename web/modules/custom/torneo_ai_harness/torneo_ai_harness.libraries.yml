@@ -1,0 +1,5 @@
+projects:
+  css:
+    component:
+      css/projects.css: {}
+

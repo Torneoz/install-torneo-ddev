@@ -49,7 +49,7 @@ if [[ "$ai_json_schema_ready" != "ready" ]]; then
 fi
 
 enabled_modules="$(ddev drush pm:list --status=enabled --type=module --format=list)"
-for required_module in ai ai_costs ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai grok gemini_provider ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image; do
+for required_module in torneo_ai_harness ai ai_costs ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai grok gemini_provider ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image; do
   if ! grep -qx "$required_module" <<< "$enabled_modules"; then
     echo "Required module was not enabled: $required_module" >&2
     exit 1

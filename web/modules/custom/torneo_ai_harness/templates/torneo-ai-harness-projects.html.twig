@@ -1,0 +1,17 @@
+<div class="torneo-projects">
+  {% for project in projects %}
+    <article class="torneo-project">
+      <div class="torneo-project__icon" aria-hidden="true">{{ project.icon }}</div>
+      <h3 class="torneo-project__title">
+        <a href="{{ project.main_url }}">{{ project.title }}</a>
+      </h3>
+      <p class="torneo-project__description">{{ project.description }}</p>
+      <footer class="torneo-project__footer">
+        {% for link in project.links %}
+          <a href="{{ link.url }}"{% if link.external %} rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
+        {% endfor %}
+      </footer>
+    </article>
+  {% endfor %}
+</div>
+

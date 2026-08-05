@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks for the Torneo AI Harness module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function torneo_ai_harness_theme($existing, $type, $theme, $path): array {
+  return [
+    'torneo_ai_harness_projects' => [
+      'variables' => [
+        'projects' => [],
+      ],
+    ],
+  ];
+}
+

@@ -1,0 +1,8 @@
+name: 'Torneo AI Harness'
+type: module
+description: 'Provides dynamic project navigation for the Torneo AI test harness.'
+package: 'Torneo AI'
+core_version_requirement: ^11
+dependencies:
+  - drupal:block
+  - canvas:canvas
