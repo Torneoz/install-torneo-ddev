@@ -11,13 +11,6 @@
         "grok_doc": {
             "type": "vcs",
             "url": "https://github.com/Torneoz/grok_doc.git"
-        },
-        "torneo_ai_language": {
-            "type": "path",
-            "url": "packages/torneo_ai_language",
-            "options": {
-                "symlink": false
-            }
         }
     },
     "require": {
@@ -104,6 +97,7 @@
         "drupal/tagify": "^1.2.50",
         "drupal/token": "^1.17.0",
         "drupal/token_or": "^2.3.2",
+        "drupal/torneo_ai_language": "^1.0@alpha",
         "drupal/trash": "^3.0.25",
         "drupal/ui_icons": "^1.1.1",
         "drupal/view_password": "^6.0.5",
@@ -111,8 +105,7 @@
         "drupal/webform": "^6.3.0-beta8",
         "drupal/yoast_seo": "^2.2.0",
         "league/commonmark": "^2.4",
-        "torneoz/grok_doc": "^1.0@alpha",
-        "torneoz/torneo_ai_language": "dev-main"
+        "torneoz/grok_doc": "^1.0@alpha"
     },
     "require-dev": {
         "drush/drush": "^13.7"

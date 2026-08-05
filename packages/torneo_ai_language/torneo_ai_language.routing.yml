@@ -1,8 +1,0 @@
-torneo_ai_language.settings:
-  path: '/admin/config/services/torneo-ai-language'
-  defaults:
-    _form: '\Drupal\torneo_ai_language\Form\TorneoAiLanguageSettingsForm'
-    _title: 'Torneo AI language'
-  requirements:
-    _permission: 'administer torneo ai language'
-

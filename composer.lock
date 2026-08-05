@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cf15feb0c4f2ed4f0b6f2b32bad2d3b",
+    "content-hash": "820963f80457e9a83b273d1f5c286e65",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6880,6 +6880,53 @@
             }
         },
         {
+            "name": "drupal/torneo_ai_language",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/torneo_ai_language.git",
+                "reference": "1.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/torneo_ai_language-1.0.0-alpha1.zip",
+                "reference": "1.0.0-alpha1",
+                "shasum": "f25f6b62e8666c077ef88468865e128845c4adf8"
+            },
+            "require": {
+                "drupal/ai": "^1.4",
+                "drupal/core": "^11.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha1",
+                    "datestamp": "1785901961",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                },
+                "installer-name": "torneo_ai_language"
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "torneoz",
+                    "homepage": "https://www.drupal.org/user/3870786"
+                }
+            ],
+            "description": "Shared AI language policy and integration for Torneoz Drupal projects.",
+            "homepage": "https://www.drupal.org/project/torneo_ai_language",
+            "support": {
+                "source": "https://github.com/Jonno/torneo_ai_language",
+                "issues": "https://www.drupal.org/project/issues/torneo_ai_language"
+            }
+        },
+        {
             "name": "drupal/trash",
             "version": "3.0.31",
             "source": {
@@ -13466,31 +13513,6 @@
             "time": "2026-08-04T00:08:37+00:00"
         },
         {
-            "name": "torneoz/torneo_ai_language",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/torneo_ai_language",
-                "reference": "43d893f7e08426d472cbfa0114f1d05536062628"
-            },
-            "require": {
-                "drupal/ai": "^1.4",
-                "drupal/core": "^11.3"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "installer-name": "torneo_ai_language"
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Shared AI language policy and integration for Torneoz Drupal projects.",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
-        },
-        {
             "name": "twig/html-extra",
             "version": "v3.28.0",
             "source": {
@@ -14912,8 +14934,8 @@
         "drupal/ai_media_image": 15,
         "drupal/ai_usage_limits": 15,
         "drupal/grok": 10,
-        "torneoz/grok_doc": 15,
-        "torneoz/torneo_ai_language": 20
+        "drupal/torneo_ai_language": 15,
+        "torneoz/grok_doc": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,

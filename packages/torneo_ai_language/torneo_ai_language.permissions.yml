@@ -1,5 +1,0 @@
-administer torneo ai language:
-  title: 'Administer Torneo AI language'
-  description: 'Configure the shared source and target language policy used by AI integrations.'
-  restrict access: true
-
