@@ -136,6 +136,40 @@ default:
         description: '<p>Rebuild a complete Drupal CMS AI environment with packaged providers, assistants, agents, chatbot configuration, API Explorer, and diagnostics.</p>'
         text_align: left
     -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: c75c6dd0-23df-4a50-b516-38e94f740d20
+      component_id: sdc.mercury.card-icon
+      inputs:
+        tile_size: '4:3'
+        background_color: background
+        border_radius: large
+        icon: currency-dollar
+        icon_size: extra-large
+        icon_align: left
+        icon_style: primary_background
+        url: 'https://github.com/Torneoz/ai_costs'
+        text: 'AI Costs'
+        description: '<p>Track provider-neutral model pricing, estimate request costs, and record usage metadata across Drupal AI integrations.</p>'
+        text_align: left
+    -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: 50788bbf-059e-40de-81f4-f6391d5d87a9
+      component_id: sdc.mercury.card-icon
+      inputs:
+        tile_size: '4:3'
+        background_color: background
+        border_radius: large
+        icon: files
+        icon_size: extra-large
+        icon_align: left
+        icon_style: primary_background
+        url: 'https://github.com/Torneoz/grok_doc'
+        text: 'Grok Collections'
+        description: '<p>Manage xAI Collections, bulk-ingest documents, and explore collection search from Drupal through the Grok provider.</p>'
+        text_align: left
+    -
       uuid: 21c67156-067e-4410-a52e-4350f869bb54
       component_id: sdc.mercury.cta
       inputs:
