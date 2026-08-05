@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bdf6f2c4f9ab119bff8db11334c5d7d",
+    "content-hash": "33cda935ac7dcc7ed9ffdbe106fc28d5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1267,17 +1267,17 @@
         },
         {
             "name": "drupal/ai_costs",
-            "version": "1.0.0-alpha2",
+            "version": "1.0.0-alpha3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Torneoz/ai_costs.git",
-                "reference": "c17dbdc55da33ba3da74a1eacd08982ee513be8d"
+                "url": "https://git.drupalcode.org/project/ai_costs.git",
+                "reference": "1.0.0-alpha3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Torneoz/ai_costs/zipball/c17dbdc55da33ba3da74a1eacd08982ee513be8d",
-                "reference": "c17dbdc55da33ba3da74a1eacd08982ee513be8d",
-                "shasum": ""
+                "url": "https://ftp.drupal.org/files/projects/ai_costs-1.0.0-alpha3.zip",
+                "reference": "1.0.0-alpha3",
+                "shasum": "9e7bd3e1ff94e46d06a2feb0feba023d7090a6fb"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -1289,11 +1289,22 @@
                 "drupal/core-dev": "^10.3 || ^11"
             },
             "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha3",
+                    "datestamp": "1785887264",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
             "autoload-dev": {
                 "psr-4": {
                     "Drupal\\Tests\\ai_costs\\": "tests/src"
                 }
             },
+            "notification-url": "https://packages.drupal.org/8/downloads",
             "scripts": {
                 "check": [
                     "@phpcs",
@@ -1309,13 +1320,18 @@
             "license": [
                 "GPL-2.0-or-later"
             ],
+            "authors": [
+                {
+                    "name": "torneoz",
+                    "homepage": "https://www.drupal.org/user/3870786"
+                }
+            ],
             "description": "Provider-neutral AI model pricing and cost estimation for Drupal.",
             "homepage": "https://github.com/Torneoz/ai_costs",
             "support": {
-                "issues": "https://github.com/Torneoz/ai_costs/issues",
-                "source": "https://github.com/Torneoz/ai_costs"
-            },
-            "time": "2026-07-31T04:03:36+00:00"
+                "source": "https://github.com/Torneoz/ai_costs",
+                "issues": "https://github.com/Torneoz/ai_costs/issues"
+            }
         },
         {
             "name": "drupal/ai_dashboard",
@@ -4387,17 +4403,11 @@
         },
         {
             "name": "drupal/grok",
-            "version": "1.0.0-beta2",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/grok.git",
-                "reference": "1.0.0-beta2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/grok-1.0.0-beta2.zip",
-                "reference": "1.0.0-beta2",
-                "shasum": "adfb50020d92181e2466959fe248e218bf7d4e58"
+                "reference": "e59e9f03fb96e06d5874680b884930b885b588ad"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -4414,9 +4424,12 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "1.0.0-beta2",
-                    "datestamp": "1785729715",
+                    "version": "1.0.0-beta1+5-dev",
+                    "datestamp": "1785729122",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -4456,6 +4469,44 @@
             "support": {
                 "source": "https://github.com/Torneoz/grok_ai_provider",
                 "issues": "https://github.com/Torneoz/grok_ai_provider/issues"
+            }
+        },
+        {
+            "name": "drupal/grok_doc",
+            "version": "dev-1.x",
+            "require": {
+                "drupal/core": "^10.6 || ^11.2",
+                "drupal/grok": "*",
+                "drupal/key": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "1.0.0-beta1+1-dev",
+                    "datestamp": "1785712823",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "torneoz",
+                    "homepage": "https://www.drupal.org/user/3870786"
+                }
+            ],
+            "description": "Manages xAI Collections and bulk document ingestion for the Grok AI Provider.",
+            "homepage": "https://www.drupal.org/project/grok",
+            "support": {
+                "source": "https://git.drupalcode.org/project/grok"
             }
         },
         {
@@ -14436,7 +14487,8 @@
         "drupal/ai_costs": 15,
         "drupal/ai_image_studio": 10,
         "drupal/ai_media_image": 15,
-        "drupal/grok": 15
+        "drupal/grok": 20,
+        "drupal/grok_doc": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

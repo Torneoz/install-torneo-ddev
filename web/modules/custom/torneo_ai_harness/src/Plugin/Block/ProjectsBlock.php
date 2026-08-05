@@ -55,7 +55,7 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
     $projects = [];
     foreach ($this->definitions() as $definition) {
       $links = [
-        $this->externalLink('GitHub', $definition['github']),
+        $this->externalLink($definition['repository_label'] ?? 'Repository', $definition['repository']),
       ];
       if (isset($definition['drupal'])) {
         $links[] = $this->externalLink('Drupal.org', $definition['drupal']);
@@ -85,7 +85,7 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'version' => $this->installedVersion($definition['package']),
         'description' => $definition['description'],
         'icon' => $definition['icon'],
-        'main_url' => $definition['drupal'] ?? $definition['github'],
+        'main_url' => $definition['drupal'] ?? $definition['repository'],
         'links' => $links,
       ];
     }
@@ -112,7 +112,7 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'package' => 'drupal/grok',
         'description' => 'Connect Drupal AI to xAI models for chat, vision, image and video generation, classification, moderation, speech, and hosted tools.',
         'icon' => 'grok',
-        'github' => 'https://github.com/Torneoz/grok_ai_provider',
+        'repository' => 'https://git.drupalcode.org/project/grok',
         'drupal' => 'https://www.drupal.org/project/grok',
         'settings' => 'grok.settings_form',
         'ui' => 'ai_api_explorer.list_page',
@@ -123,7 +123,7 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'package' => 'drupal/ai_image_studio',
         'description' => 'Generate, refine, compare, and publish AI images and videos through a conversational Drupal workspace with usage and cost metadata.',
         'icon' => 'image',
-        'github' => 'https://github.com/Torneoz/ai_image_studio',
+        'repository' => 'https://git.drupalcode.org/project/ai_image_studio',
         'drupal' => 'https://www.drupal.org/project/ai_image_studio',
         'settings' => 'ai_image_studio.settings',
         'ui' => 'entity.ai_image_studio_session.collection',
@@ -134,7 +134,8 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'package' => 'torneoz/drupal-ai-test-harness',
         'description' => 'Rebuild a complete Drupal CMS AI environment with packaged providers, assistants, agents, chatbot configuration, API Explorer, and diagnostics.',
         'icon' => 'harness',
-        'github' => 'https://github.com/Torneoz/install-torneo-ddev',
+        'repository' => 'https://github.com/Torneoz/install-torneo-ddev',
+        'repository_label' => 'GitHub',
         'settings' => 'ai.settings.menu',
         'ui' => 'ai_api_explorer.list_page',
         'ui_label' => 'API Explorer',
@@ -144,7 +145,8 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'package' => 'drupal/ai_costs',
         'description' => 'Track provider-neutral model pricing, estimate request costs, and record usage metadata across Drupal AI integrations.',
         'icon' => 'costs',
-        'github' => 'https://github.com/Torneoz/ai_costs',
+        'repository' => 'https://git.drupalcode.org/project/ai_costs',
+        'drupal' => 'https://www.drupal.org/project/ai_costs',
         'settings' => 'ai_costs.settings',
       ],
       [
@@ -152,7 +154,8 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'package' => 'drupal/grok_doc',
         'description' => 'Manage xAI Collections, bulk-ingest documents, and explore collection search from Drupal through the Grok provider.',
         'icon' => 'collections',
-        'github' => 'https://github.com/Torneoz/grok_doc',
+        'repository' => 'https://git.drupalcode.org/project/grok',
+        'drupal' => 'https://www.drupal.org/project/grok',
         'settings' => 'entity.grok_doc_collection.collection',
         'settings_label' => 'Collections',
         'ui' => 'ai_api_explorer.list_page',

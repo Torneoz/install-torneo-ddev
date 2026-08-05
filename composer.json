@@ -1,16 +1,12 @@
 {
     "name": "torneoz/drupal-ai-test-harness",
-    "description": "A reproducible Drupal CMS test harness for AI providers, agents, assistants, chatbot, dashboard, and API Explorer integrations.",
+    "description": "A reproducible Drupal CMS test harness for building and testing Torneo AI integrations.",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "repositories": {
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        "ai_costs": {
-            "type": "vcs",
-            "url": "https://github.com/Torneoz/ai_costs.git"
         }
     },
     "require": {
@@ -61,7 +57,8 @@
         "drupal/gin_login": "^2.1.4",
         "drupal/gin_toolbar": "^3.0.3",
         "drupal/google_tag": "^2.0.7",
-        "drupal/grok": "^1.0@alpha",
+        "drupal/grok": "1.x-dev",
+        "drupal/grok_doc": "1.x-dev",
         "drupal/haven_theme": "^1",
         "drupal/honeypot": "^2.2.2",
         "drupal/jquery_ui": "^1.8.0",

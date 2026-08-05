@@ -17,7 +17,7 @@ default:
       uuid: 5eb3cda4-eb09-4307-9a5a-ec511e13446d
       component_id: sdc.mercury.cta
       inputs:
-        heading_text: 'Build and test Drupal AI integrations'
+        heading_text: 'Build and test Torneo AI integrations'
         level: 1
         text: 'A reproducible Drupal environment for exploring AI providers, conversational assistants, image and video generation, agents, and developer tooling.'
         text_align: center

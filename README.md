@@ -1,7 +1,8 @@
-# Drupal AI module test harness
+# Torneo AI Test Harness
 
-A disposable, reproducible Drupal CMS site for testing the Drupal AI ecosystem
-with OpenAI and xAI Grok. The project packages the modules, provider defaults,
+A disposable, reproducible Drupal CMS site to build and test Torneo AI
+integrations with OpenAI, Gemini, and xAI Grok. The project packages the
+modules, provider defaults,
 assistant, agent, chatbot block, Canvas integration, permissions, and local
 development environment required to rebuild the same test site from source.
 
@@ -18,6 +19,7 @@ This repository is an AI integration harness. It does not install
 - AI CKEditor integration
 - OpenAI Provider
 - Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
+- Grok Collections (`drupal/grok_doc`, provided by the Grok Drupal.org project)
 - Gemini Provider
 - AI Image Studio
 - AI Media Image
@@ -27,6 +29,17 @@ This repository is an AI integration harness. It does not install
 - A preconfigured `Harness Chatbot` agent and assistant
 
 Composer installs the exact dependency versions recorded in `composer.lock`.
+Contributed Drupal projects are resolved through the official
+`https://packages.drupal.org/8` Composer repository.
+
+## Featured Torneo AI projects
+
+| Project | Drupal.org | Source repository |
+| --- | --- | --- |
+| Grok Integration and Grok Collections | [Project page](https://www.drupal.org/project/grok) | [Drupal GitLab](https://git.drupalcode.org/project/grok) |
+| AI Image Studio | [Project page](https://www.drupal.org/project/ai_image_studio) | [Drupal GitLab](https://git.drupalcode.org/project/ai_image_studio) |
+| AI Costs | [Project page](https://www.drupal.org/project/ai_costs) | [Drupal GitLab](https://git.drupalcode.org/project/ai_costs) |
+| Torneo AI Test Harness | — | [GitHub](https://github.com/Torneoz/install-torneo-ddev) |
 
 ## Requirements
 
