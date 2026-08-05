@@ -19,7 +19,6 @@ This repository is an AI integration harness. It does not install
 - AI CKEditor integration
 - OpenAI Provider
 - Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
-- Grok Collections (`drupal/grok_doc`, provided by the Grok Drupal.org project)
 - Gemini Provider
 - AI Image Studio
 - AI Media Image

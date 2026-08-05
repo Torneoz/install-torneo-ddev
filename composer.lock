@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33cda935ac7dcc7ed9ffdbe106fc28d5",
+    "content-hash": "c888460efb9565925310f648f9088a61",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4403,11 +4403,17 @@
         },
         {
             "name": "drupal/grok",
-            "version": "dev-1.x",
+            "version": "1.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/grok.git",
-                "reference": "e59e9f03fb96e06d5874680b884930b885b588ad"
+                "reference": "1.0.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/grok-1.0.0-beta2.zip",
+                "reference": "1.0.0-beta2",
+                "shasum": "adfb50020d92181e2466959fe248e218bf7d4e58"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -4424,12 +4430,9 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "1.0.0-beta1+5-dev",
-                    "datestamp": "1785729122",
+                    "version": "1.0.0-beta2",
+                    "datestamp": "1785729715",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -4469,44 +4472,6 @@
             "support": {
                 "source": "https://github.com/Torneoz/grok_ai_provider",
                 "issues": "https://github.com/Torneoz/grok_ai_provider/issues"
-            }
-        },
-        {
-            "name": "drupal/grok_doc",
-            "version": "dev-1.x",
-            "require": {
-                "drupal/core": "^10.6 || ^11.2",
-                "drupal/grok": "*",
-                "drupal/key": "*"
-            },
-            "type": "metapackage",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "1.0.0-beta1+1-dev",
-                    "datestamp": "1785712823",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "torneoz",
-                    "homepage": "https://www.drupal.org/user/3870786"
-                }
-            ],
-            "description": "Manages xAI Collections and bulk document ingestion for the Grok AI Provider.",
-            "homepage": "https://www.drupal.org/project/grok",
-            "support": {
-                "source": "https://git.drupalcode.org/project/grok"
             }
         },
         {
@@ -14487,8 +14452,7 @@
         "drupal/ai_costs": 15,
         "drupal/ai_image_studio": 10,
         "drupal/ai_media_image": 15,
-        "drupal/grok": 20,
-        "drupal/grok_doc": 20
+        "drupal/grok": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
