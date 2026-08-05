@@ -33,6 +33,7 @@ config:
         api_key: google_gemini_api_key
     system.site:
       simpleConfigUpdate:
+        name: 'Torneo AI'
         page.front: /home
     user.role.anonymous:
       grantPermissions:
