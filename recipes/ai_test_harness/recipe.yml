@@ -6,6 +6,9 @@ install:
   - torneo_ai_harness
   - ai
   - ai_costs
+  - ai_metering
+  - ai_budget_control
+  - ai_usage_limits
   - ai_observability
   - ai_ckeditor
   - ai_agents

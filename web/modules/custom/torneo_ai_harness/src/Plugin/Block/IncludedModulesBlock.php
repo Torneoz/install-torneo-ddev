@@ -102,6 +102,9 @@ final class IncludedModulesBlock extends BlockBase implements ContainerFactoryPl
       'Third-party AI modules' => [
         ['name' => 'AI Agents', 'module' => 'ai_agents', 'package' => 'drupal/ai_agents', 'url' => 'https://www.drupal.org/project/ai_agents', 'route' => 'entity.ai_agent.collection', 'route_label' => 'Open'],
         ['name' => 'AI Costs', 'module' => 'ai_costs', 'package' => 'drupal/ai_costs', 'url' => 'https://www.drupal.org/project/ai_costs', 'route' => 'ai_costs.settings'],
+        ['name' => 'AI Metering', 'module' => 'ai_metering', 'package' => 'drupal/ai_metering', 'url' => 'https://www.drupal.org/project/ai_metering', 'route' => 'ai_metering.settings'],
+        ['name' => 'AI Budget Control', 'module' => 'ai_budget_control', 'package' => 'drupal/ai_budget_control', 'url' => 'https://www.drupal.org/project/ai_budget_control', 'route' => 'ai_budget_control.dashboard', 'route_label' => 'Open'],
+        ['name' => 'AI Usage Limits', 'module' => 'ai_usage_limits', 'package' => 'drupal/ai_usage_limits', 'url' => 'https://www.drupal.org/project/ai_usage_limits', 'route' => 'ai_usage_limits.settings'],
         ['name' => 'AI Dashboard', 'module' => 'ai_dashboard', 'package' => 'drupal/ai_dashboard', 'url' => 'https://www.drupal.org/project/ai_dashboard', 'route' => 'ai.settings.menu', 'route_label' => 'Open'],
         ['name' => 'AI Image Alt Text', 'module' => 'ai_image_alt_text', 'package' => 'drupal/ai_image_alt_text', 'url' => 'https://www.drupal.org/project/ai_image_alt_text', 'route' => 'ai_image_alt_text.settings_form'],
         ['name' => 'AI Image Bulk Alt Text', 'module' => 'ai_image_bulk_alt_text', 'package' => 'drupal/ai_image_alt_text', 'url' => 'https://www.drupal.org/project/ai_image_alt_text', 'route' => 'ai_image_bulk_alt_text.fix_alt_text', 'route_label' => 'Open'],

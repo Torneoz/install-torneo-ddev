@@ -16,6 +16,7 @@ This repository is an AI integration harness. It does not install
 - AI Chatbot with a preconfigured DeepChat toolbar block
 - AI Dashboard and AI API Explorer
 - AI Costs and AI Observability
+- AI Metering, AI Budget Control, and AI Usage Limits
 - AI CKEditor integration
 - OpenAI Provider
 - Anthropic Provider
@@ -42,6 +43,22 @@ Contributed Drupal projects are resolved through the official
 | AI Image Studio | [Project page](https://www.drupal.org/project/ai_image_studio) | [Drupal GitLab](https://git.drupalcode.org/project/ai_image_studio) |
 | AI Costs | [Project page](https://www.drupal.org/project/ai_costs) | [Drupal GitLab](https://git.drupalcode.org/project/ai_costs) |
 | Torneo AI Test Harness | — | [GitHub](https://github.com/Torneoz/install-torneo-ddev) |
+
+### AI cost and usage governance modules
+
+The harness enables the related projects together for comparison and
+integration testing:
+
+| Module | Included capability |
+| --- | --- |
+| [AI Costs](https://www.drupal.org/project/ai_costs) | Provider-neutral pricing metadata, request estimates, and usage-cost records. |
+| [AI Metering](https://www.drupal.org/project/ai_metering) | Per-call metering, cost dashboards, quotas, pricing sync, and exports. |
+| [AI Budget Control](https://www.drupal.org/project/ai_budget_control) | Provider, role, and user budgets with hard and soft limits. |
+| [AI Usage Limits](https://www.drupal.org/project/ai_usage_limits) | Provider-level token ceilings for supported usage categories. |
+
+These modules overlap intentionally. This site is a test harness, not a
+recommended production configuration; evaluate which governance model fits a
+production site before enabling overlapping enforcement policies.
 
 ## Requirements
 
