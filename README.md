@@ -18,6 +18,7 @@ This repository is an AI integration harness. It does not install
 - AI Costs and AI Observability
 - AI CKEditor integration
 - OpenAI Provider
+- Anthropic Provider
 - Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
 - Grok Documents (`torneoz/grok_doc`)
 - Gemini Provider
@@ -90,6 +91,7 @@ to test, then restart DDEV:
 
 ```dotenv
 OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
 XAI_API_KEY=
 GEMINI_API_KEY=
 ```

@@ -11,6 +11,9 @@
               <a href="{{ module.url }}" rel="noopener noreferrer">{{ module.name }}</a>
               <span class="torneo-modules__version">{{ module.version }}</span>
               <code>{{ module.machine_name }}</code>
+              {% if module.settings %}
+                <a class="torneo-modules__local-link" href="{{ module.settings.url }}">{{ module.settings.label }}</a>
+              {% endif %}
             </li>
           {% endfor %}
         </ul>

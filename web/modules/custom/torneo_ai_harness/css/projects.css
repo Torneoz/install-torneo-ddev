@@ -179,8 +179,12 @@
 }
 
 .torneo-modules__group code {
-  grid-column: 1 / -1;
   color: color-mix(in srgb, currentColor 65%, transparent);
+  font-size: 0.75rem;
+}
+
+.torneo-modules__local-link {
+  justify-self: end;
   font-size: 0.75rem;
 }
 

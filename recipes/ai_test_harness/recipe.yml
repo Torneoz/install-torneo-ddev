@@ -1,5 +1,5 @@
 name: 'AI module test harness'
-description: 'Installs Drupal AI, costs, observability, CKEditor integration, OpenAI and Grok providers, AI Image Studio, and AI Media Image.'
+description: 'Installs Drupal AI, costs, observability, CKEditor integration, OpenAI, Anthropic and Grok providers, AI Image Studio, and AI Media Image.'
 type: recipe
 
 install:
@@ -14,6 +14,7 @@ install:
   - ai_dashboard
   - ai_api_explorer
   - ai_provider_openai
+  - ai_provider_anthropic
   - grok
   - grok_doc
   - gemini_provider
@@ -27,6 +28,9 @@ config:
     ai_provider_openai.settings:
       simpleConfigUpdate:
         api_key: openai_api_key
+    ai_provider_anthropic.settings:
+      simpleConfigUpdate:
+        api_key: anthropic_api_key
     grok.settings:
       simpleConfigUpdate:
         api_key: xai_api_key
