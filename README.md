@@ -50,23 +50,6 @@ git clone https://github.com/Torneoz/install-torneo-ddev.git
 cd install-torneo-ddev
 ```
 
-Create the local credentials file:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and add the provider keys you intend to test:
-
-```dotenv
-OPENAI_API_KEY=
-XAI_API_KEY=
-GEMINI_API_KEY=
-```
-
-Never commit `.env`. It is ignored by Git and passed only to the DDEV web
-container.
-
 Build the complete site:
 
 ```bash
@@ -83,6 +66,26 @@ Open the site:
 ```bash
 ddev launch
 ```
+
+That is the complete installation path. On the first rebuild, the command
+automatically creates an ignored `.env` file from `.env.example`. The site can
+be built and inspected without API keys.
+
+To make live model requests, edit `.env` and add the provider keys you intend
+to test, then restart DDEV:
+
+```dotenv
+OPENAI_API_KEY=
+XAI_API_KEY=
+GEMINI_API_KEY=
+```
+
+```bash
+ddev restart
+```
+
+Never commit `.env`. It is ignored by Git and passed only to the DDEV web
+container.
 
 The initial local-only administrator account is:
 
@@ -205,8 +208,8 @@ cannot hide packaging problems:
 git clone --branch v1.0.0 --depth 1 \
   https://github.com/Torneoz/install-torneo-ddev.git install-torneo-v1-test
 cd install-torneo-v1-test
-cp .env.example .env
 ddev rebuild --yes
+ddev launch
 ```
 
 For the strongest verification, perform this test on a second computer or a

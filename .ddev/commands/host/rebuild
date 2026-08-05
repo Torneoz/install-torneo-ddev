@@ -6,6 +6,11 @@
 
 set -euo pipefail
 
+if [[ ! -f .env ]]; then
+  cp .env.example .env
+  echo "Created .env from .env.example. Add provider API keys there when needed."
+fi
+
 if [[ "${1:-}" != "--yes" ]]; then
   read -r -p "Erase the current database and rebuild the test site? [y/N] " reply
   if [[ ! "$reply" =~ ^[Yy]$ ]]; then
