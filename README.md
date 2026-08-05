@@ -19,6 +19,7 @@ This repository is an AI integration harness. It does not install
 - AI CKEditor integration
 - OpenAI Provider
 - Grok AI Provider (`drupal/grok`, renamed from `grok_ai_provider`)
+- Grok Documents (`torneoz/grok_doc`)
 - Gemini Provider
 - AI Image Studio
 - AI Media Image
@@ -35,7 +36,8 @@ Contributed Drupal projects are resolved through the official
 
 | Project | Drupal.org | Source repository |
 | --- | --- | --- |
-| Grok Integration and Grok Collections | [Project page](https://www.drupal.org/project/grok) | [Drupal GitLab](https://git.drupalcode.org/project/grok) |
+| Grok Integration | [Project page](https://www.drupal.org/project/grok) | [Drupal GitLab](https://git.drupalcode.org/project/grok) |
+| Grok Documents and Collections | [Grok project page](https://www.drupal.org/project/grok) | [GitHub](https://github.com/Torneoz/grok_doc) |
 | AI Image Studio | [Project page](https://www.drupal.org/project/ai_image_studio) | [Drupal GitLab](https://git.drupalcode.org/project/ai_image_studio) |
 | AI Costs | [Project page](https://www.drupal.org/project/ai_costs) | [Drupal GitLab](https://git.drupalcode.org/project/ai_costs) |
 | Torneo AI Test Harness | — | [GitHub](https://github.com/Torneoz/install-torneo-ddev) |

@@ -98,6 +98,7 @@ final class IncludedModulesBlock extends BlockBase implements ContainerFactoryPl
         ['name' => 'OpenAI Provider', 'module' => 'ai_provider_openai', 'package' => 'drupal/ai_provider_openai', 'url' => 'https://www.drupal.org/project/ai_provider_openai'],
         ['name' => 'Gemini Provider', 'module' => 'gemini_provider', 'package' => 'drupal/gemini_provider', 'url' => 'https://www.drupal.org/project/gemini_provider'],
         ['name' => 'Grok Integration', 'module' => 'grok', 'package' => 'drupal/grok', 'url' => 'https://www.drupal.org/project/grok'],
+        ['name' => 'Grok Documents', 'module' => 'grok_doc', 'package' => 'torneoz/grok_doc', 'url' => 'https://www.drupal.org/project/grok'],
       ],
     ];
   }

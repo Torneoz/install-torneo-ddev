@@ -7,6 +7,10 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        "grok_doc": {
+            "type": "vcs",
+            "url": "https://github.com/Torneoz/grok_doc.git"
         }
     },
     "require": {
@@ -96,7 +100,8 @@
         "drupal/views_infinite_scroll": "^2.0.3",
         "drupal/webform": "^6.3.0-beta8",
         "drupal/yoast_seo": "^2.2.0",
-        "league/commonmark": "^2.4"
+        "league/commonmark": "^2.4",
+        "torneoz/grok_doc": "^1.0@alpha"
     },
     "require-dev": {
         "drush/drush": "^13.7"

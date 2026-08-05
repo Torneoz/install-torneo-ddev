@@ -151,10 +151,11 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
       ],
       [
         'title' => 'Grok Collections',
-        'package' => 'drupal/grok_doc',
+        'package' => 'torneoz/grok_doc',
         'description' => 'Manage xAI Collections, bulk-ingest documents, and explore collection search from Drupal through the Grok provider.',
         'icon' => 'collections',
-        'repository' => 'https://git.drupalcode.org/project/grok',
+        'repository' => 'https://github.com/Torneoz/grok_doc',
+        'repository_label' => 'GitHub',
         'drupal' => 'https://www.drupal.org/project/grok',
         'settings' => 'entity.grok_doc_collection.collection',
         'settings_label' => 'Collections',
