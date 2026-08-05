@@ -1,3 +1,15 @@
+.torneo-projects-section,
+.torneo-modules {
+  --torneo-link-color: #174ea6;
+  --torneo-link-hover-color: #0b3d91;
+}
+
+.dark .torneo-projects-section,
+.dark .torneo-modules {
+  --torneo-link-color: #8fb4ff;
+  --torneo-link-hover-color: #b9d0ff;
+}
+
 .torneo-projects {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -77,7 +89,7 @@
 }
 
 .torneo-project__footer a {
-  color: var(--primary);
+  color: var(--torneo-link-color);
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
@@ -85,6 +97,7 @@
 
 .torneo-project__footer a:hover,
 .torneo-project__footer a:focus-visible {
+  color: var(--torneo-link-hover-color);
   text-decoration: underline;
 }
 
@@ -142,14 +155,22 @@
 }
 
 .torneo-modules__group a {
-  color: var(--primary);
+  color: var(--torneo-link-color);
   font-weight: 600;
   text-decoration: none;
 }
 
 .torneo-modules__group a:hover,
 .torneo-modules__group a:focus-visible {
+  color: var(--torneo-link-hover-color);
   text-decoration: underline;
+}
+
+.torneo-project__footer a:focus-visible,
+.torneo-modules__group a:focus-visible {
+  border-radius: 0.125rem;
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 .torneo-modules__version {
