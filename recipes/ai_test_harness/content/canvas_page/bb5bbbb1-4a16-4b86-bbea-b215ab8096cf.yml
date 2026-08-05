@@ -93,6 +93,14 @@ default:
         label: 'Torneo AI projects'
         label_display: '0'
     -
+      parent_uuid: cae6905f-6b90-49a7-a96d-5f8ba2a31d37
+      slot: main_slot
+      uuid: 8af13238-691a-44d6-b475-68ca7ba39f57
+      component_id: block.torneo_ai_harness_included_modules
+      inputs:
+        label: 'Included AI modules'
+        label_display: '0'
+    -
       uuid: 21c67156-067e-4410-a52e-4350f869bb54
       component_id: sdc.mercury.cta
       inputs:

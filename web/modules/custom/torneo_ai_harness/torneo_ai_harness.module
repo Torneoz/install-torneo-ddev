@@ -15,6 +15,10 @@ function torneo_ai_harness_theme($existing, $type, $theme, $path): array {
         'projects' => [],
       ],
     ],
+    'torneo_ai_harness_included_modules' => [
+      'variables' => [
+        'groups' => [],
+      ],
+    ],
   ];
 }
-
