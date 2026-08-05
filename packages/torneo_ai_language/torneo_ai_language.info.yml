@@ -1,0 +1,9 @@
+name: 'Torneo AI Language'
+type: module
+description: 'Provides shared AI language policy and integration for Torneoz sites.'
+package: 'Torneo'
+core_version_requirement: ^11.3
+dependencies:
+  - drupal:language
+  - ai:ai
+configure: torneo_ai_language.settings

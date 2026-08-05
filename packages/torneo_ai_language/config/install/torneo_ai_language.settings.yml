@@ -1,0 +1,18 @@
+enabled_languages:
+  - en
+  - ar
+  - de
+  - es
+  - fr
+  - hi
+  - ja
+  - pt
+  - ru
+  - sw
+  - zh-hans
+source_language: content
+target_language: source
+fixed_source_language: en
+fixed_target_language: en
+fallback_language: en
+include_prompt_instruction: true

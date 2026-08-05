@@ -1,0 +1,42 @@
+torneo_ai_language.settings:
+  type: config_object
+  label: 'Torneo AI language settings'
+  mapping:
+    enabled_languages:
+      type: sequence
+      label: 'Enabled site languages'
+      sequence:
+        type: string
+    source_language:
+      type: string
+      label: 'Source language strategy'
+      constraints:
+        Choice:
+          choices:
+            - content
+            - interface
+            - site_default
+            - fixed
+    target_language:
+      type: string
+      label: 'Target language strategy'
+      constraints:
+        Choice:
+          choices:
+            - source
+            - content
+            - interface
+            - site_default
+            - fixed
+    fixed_source_language:
+      type: string
+      label: 'Fixed source language'
+    fixed_target_language:
+      type: string
+      label: 'Fixed target language'
+    fallback_language:
+      type: string
+      label: 'Fallback language'
+    include_prompt_instruction:
+      type: boolean
+      label: 'Include a language instruction in AI prompts'

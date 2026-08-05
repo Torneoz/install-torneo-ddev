@@ -1,0 +1,13 @@
+{
+  "name": "torneoz/torneo_ai_language",
+  "description": "Shared AI language policy and integration for Torneoz Drupal projects.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "drupal/core": "^11.3",
+    "drupal/ai": "^1.4"
+  },
+  "extra": {
+    "installer-name": "torneo_ai_language"
+  }
+}

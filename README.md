@@ -12,6 +12,7 @@ This repository is an AI integration harness. It does not install
 ## Included features
 
 - Drupal AI Core 1.x
+- Torneo AI Language, bundled as a local Composer package
 - AI Agents and AI Assistant API
 - AI Chatbot with a preconfigured DeepChat toolbar block
 - AI Dashboard and AI API Explorer
@@ -43,6 +44,7 @@ Contributed Drupal projects are resolved through the official
 | AI Image Studio | [Project page](https://www.drupal.org/project/ai_image_studio) | [Drupal GitLab](https://git.drupalcode.org/project/ai_image_studio) |
 | AI Costs | [Project page](https://www.drupal.org/project/ai_costs) | [Drupal GitLab](https://git.drupalcode.org/project/ai_costs) |
 | Torneo AI Test Harness | — | [GitHub](https://github.com/Torneoz/install-torneo-ddev) |
+| Torneo AI Language | — | Bundled in `packages/torneo_ai_language` |
 
 ### AI cost and usage governance modules
 

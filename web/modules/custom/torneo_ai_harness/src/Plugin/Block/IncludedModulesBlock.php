@@ -100,6 +100,7 @@ final class IncludedModulesBlock extends BlockBase implements ContainerFactoryPl
         ['name' => 'AI Observability', 'module' => 'ai_observability', 'package' => 'drupal/ai', 'url' => 'https://www.drupal.org/project/ai', 'route' => 'ai_observability.settings'],
       ],
       'Third-party AI modules' => [
+        ['name' => 'Torneo AI Language', 'module' => 'torneo_ai_language', 'package' => 'torneoz/torneo_ai_language', 'url' => 'https://github.com/Torneoz/torneo_ai_language', 'route' => 'torneo_ai_language.settings'],
         ['name' => 'AI Agents', 'module' => 'ai_agents', 'package' => 'drupal/ai_agents', 'url' => 'https://www.drupal.org/project/ai_agents', 'route' => 'entity.ai_agent.collection', 'route_label' => 'Open'],
         ['name' => 'AI Costs', 'module' => 'ai_costs', 'package' => 'drupal/ai_costs', 'url' => 'https://www.drupal.org/project/ai_costs', 'route' => 'ai_costs.settings'],
         ['name' => 'AI Metering', 'module' => 'ai_metering', 'package' => 'drupal/ai_metering', 'url' => 'https://www.drupal.org/project/ai_metering', 'route' => 'ai_metering.settings'],

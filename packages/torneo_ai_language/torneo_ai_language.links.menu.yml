@@ -1,0 +1,7 @@
+torneo_ai_language.settings:
+  title: 'Torneo AI language'
+  description: 'Configure shared source and target language context for AI integrations.'
+  route_name: torneo_ai_language.settings
+  parent: system.admin_config_services
+  weight: 20
+

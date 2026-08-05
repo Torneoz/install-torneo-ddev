@@ -4,6 +4,7 @@ type: recipe
 
 install:
   - torneo_ai_harness
+  - torneo_ai_language
   - ai
   - ai_costs
   - ai_metering
