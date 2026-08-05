@@ -37,6 +37,18 @@ ddev drush site:install drupal_cms_installer \
 ddev drush php:eval '$storage = \Drupal::entityTypeManager()->getStorage("canvas_page"); $ids = $storage->getQuery()->accessCheck(FALSE)->condition("title", "Home")->execute(); if ($ids) { $storage->delete($storage->loadMultiple($ids)); }'
 
 ddev exec vendor/bin/dr recipe /var/www/html/recipes/ai_test_harness
+
+# Recipes can enable config-entity modules after Drupal's config manager has
+# already cached its entity-type mappings. Refresh discovery before importing
+# configuration owned by AI Agents, AI Assistant API, and Key.
+ddev drush cache:rebuild
+
+config_entity_types_ready="$(ddev drush php:eval '$manager = \Drupal::service("config.manager"); $expected = ["ai_agents.ai_agent.harness_chatbot" => "ai_agent", "ai_assistant_api.ai_assistant.harness_chatbot" => "ai_assistant", "key.key.openai_api_key" => "key"]; $ready = TRUE; foreach ($expected as $name => $entity_type) { $ready = $ready && $manager->getEntityTypeIdByName($name) === $entity_type; } echo $ready ? "ready" : "missing";')"
+if [[ "$config_entity_types_ready" != "ready" ]]; then
+  echo "Drupal did not discover the required AI and Key config entity types." >&2
+  exit 1
+fi
+
 ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/config --yes
 ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harness/post_install_config --yes
 ddev drush updatedb --yes
