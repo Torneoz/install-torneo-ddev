@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad7d973308df7841485cad2b47bcb2d8",
+    "content-hash": "cad9b2fdb776ffcfeab4f3e04a1100bf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1767,17 +1767,17 @@
         },
         {
             "name": "drupal/ai_image_studio",
-            "version": "1.0.0-beta7",
+            "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/ai_image_studio.git",
-                "reference": "1.0.0-beta7"
+                "url": "https://github.com/Torneoz/ai_image_studio.git",
+                "reference": "d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_image_studio-1.0.0-beta7.zip",
-                "reference": "1.0.0-beta7",
-                "shasum": "8ccaa8c0ec9df410b1543cb31ac41351556a2c91"
+                "url": "https://api.github.com/repos/Torneoz/ai_image_studio/zipball/d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821",
+                "reference": "d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821",
+                "shasum": ""
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -1790,33 +1790,18 @@
             "suggest": {
                 "drupal/torneo_ai": "Provides shared provider-neutral cost estimates when an API does not report request cost."
             },
+            "default-branch": true,
             "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.0-beta7",
-                    "datestamp": "1786930271",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
                 "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "torneoz",
-                    "homepage": "https://www.drupal.org/user/3870786"
-                }
             ],
             "description": "Conversational image and video generation using Drupal AI providers.",
             "homepage": "https://www.drupal.org/project/ai_image_studio",
             "support": {
-                "source": "https://github.com/Torneoz/ai_image_studio",
-                "issues": "https://www.drupal.org/project/issues/ai_image_studio"
-            }
+                "issues": "https://www.drupal.org/project/issues/ai_image_studio",
+                "source": "https://github.com/Torneoz/ai_image_studio"
+            },
+            "time": "2026-08-23T03:28:24+00:00"
         },
         {
             "name": "drupal/ai_media_image",
@@ -15456,11 +15441,18 @@
             "time": "2026-06-29T15:41:09+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "drupal/ai_image_studio",
+            "version": "dev-main",
+            "alias": "1.0.99",
+            "alias_normalized": "1.0.99.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/ai_costs": 15,
-        "drupal/ai_image_studio": 10,
+        "drupal/ai_image_studio": 20,
         "drupal/ai_media_image": 15,
         "drupal/ai_usage_limits": 15,
         "drupal/grok": 10,
