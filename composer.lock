@@ -1771,17 +1771,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Torneoz/ai_image_studio.git",
-                "reference": "d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821"
+                "reference": "7e5a12f31d91226a49f0dad02c015c866d78d832"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Torneoz/ai_image_studio/zipball/d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821",
-                "reference": "d89b3bcc79f61ddcc645a02aeaa3b046b4ea6821",
+                "url": "https://api.github.com/repos/Torneoz/ai_image_studio/zipball/7e5a12f31d91226a49f0dad02c015c866d78d832",
+                "reference": "7e5a12f31d91226a49f0dad02c015c866d78d832",
                 "shasum": ""
             },
             "require": {
                 "drupal/ai": "^1.4",
                 "drupal/core": "^10.3 || ^11",
+                "ext-zip": "*",
                 "php": ">=8.1"
             },
             "require-dev": {
@@ -1801,7 +1802,7 @@
                 "issues": "https://www.drupal.org/project/issues/ai_image_studio",
                 "source": "https://github.com/Torneoz/ai_image_studio"
             },
-            "time": "2026-08-23T03:28:24+00:00"
+            "time": "2026-08-23T04:00:06+00:00"
         },
         {
             "name": "drupal/ai_media_image",
