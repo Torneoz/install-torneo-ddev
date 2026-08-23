@@ -3,6 +3,7 @@ description: 'Installs Drupal AI, costs, observability, CKEditor integration, Op
 type: recipe
 
 install:
+  - locale
   - torneo_ai_harness
   - torneo_ai_language
   - ai
@@ -26,6 +27,7 @@ install:
   - ai_image_bulk_alt_text
   - ai_image_studio
   - ai_media_image
+  - scaffai
 
 config:
   actions:

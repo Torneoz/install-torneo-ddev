@@ -59,6 +59,26 @@ ddev drush config:import --partial --source=/var/www/html/recipes/ai_test_harnes
 ddev drush updatedb --yes
 ddev drush cache:rebuild
 
+# Import only translations bundled by Torneo projects. Drupal's locale:update
+# command is intentionally not used because it checks every installed project.
+torneo_translation_modules=(
+  web/modules/custom/torneo_ai_harness
+  web/modules/contrib/torneo_ai_language
+  web/modules/contrib/grok
+  web/modules/contrib/grok_doc
+  web/modules/contrib/ai_image_studio
+  web/modules/contrib/ai_costs
+)
+for module_directory in "${torneo_translation_modules[@]}"; do
+  for translation_file in "$module_directory"/translations/*.po; do
+    [[ -f "$translation_file" ]] || continue
+    translation_name="${translation_file%.po}"
+    langcode="${translation_name##*.}"
+    ddev drush locale:import "$langcode" "/var/www/html/$translation_file"
+  done
+done
+ddev drush cache:rebuild
+
 ai_json_schema_ready="$(ddev drush php:eval 'echo class_exists("Drupal\\ai\\Element\\AiJsonSchema") ? "ready" : "missing";')"
 if [[ "$ai_json_schema_ready" != "ready" ]]; then
   echo "AI JSON Schema render element is not autoloadable after rebuild." >&2
@@ -66,7 +86,7 @@ if [[ "$ai_json_schema_ready" != "ready" ]]; then
 fi
 
 enabled_modules="$(ddev drush pm:list --status=enabled --type=module --format=list)"
-for required_module in torneo_ai_harness torneo_ai_language ai ai_costs ai_metering ai_budget_control ai_usage_limits ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai ai_provider_anthropic grok grok_doc gemini_provider ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image; do
+for required_module in locale torneo_ai_harness torneo_ai_language ai ai_costs ai_metering ai_budget_control ai_usage_limits ai_observability ai_ckeditor ai_agents ai_assistant_api ai_chatbot ai_dashboard ai_api_explorer ai_provider_openai ai_provider_anthropic grok grok_doc gemini_provider ai_image_alt_text ai_image_bulk_alt_text ai_image_studio ai_media_image scaffai; do
   if ! grep -qx "$required_module" <<< "$enabled_modules"; then
     echo "Required module was not enabled: $required_module" >&2
     exit 1

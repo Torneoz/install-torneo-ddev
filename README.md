@@ -12,6 +12,7 @@ This repository is an AI integration harness. It does not install
 ## Included features
 
 - Drupal AI Core 1.x
+- Core Interface Translation
 - Torneo AI Language
 - AI Agents and AI Assistant API
 - AI Chatbot with a preconfigured DeepChat toolbar block
@@ -25,6 +26,7 @@ This repository is an AI integration harness. It does not install
 - Grok Documents (`torneoz/grok_doc`)
 - Gemini Provider
 - AI Image Studio
+- Ask Scaffgang (ScaffAI)
 - AI Media Image
 - AI Image Alt Text and AI Image Bulk Alt Text
 - Drupal Canvas components for both AI chatbot block types
@@ -142,7 +144,8 @@ The rebuild performs the following operations in order:
 5. Applies `recipes/ai_test_harness`.
 6. Imports the recipe configuration and post-install configuration.
 7. Runs Drupal database updates and rebuilds caches.
-8. Verifies every required AI module and the `private://` stream wrapper.
+8. Imports bundled Torneo module translations for every installed language.
+9. Verifies every required AI module and the `private://` stream wrapper.
 
 Run the interactive version when you want a confirmation prompt before the
 database is erased:
@@ -206,7 +209,7 @@ Verify the required modules:
 
 ```bash
 ddev drush pm:list --status=enabled --type=module --format=list \
-  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_media_image|ai_provider_openai|gemini_provider|grok)$'
+  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_media_image|ai_provider_openai|gemini_provider|grok|locale)$'
 ```
 
 Verify the packaged assistant, block, and default provider:

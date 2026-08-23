@@ -11,6 +11,10 @@
         "grok_doc": {
             "type": "vcs",
             "url": "https://github.com/Torneoz/grok_doc.git"
+        },
+        "scaffai": {
+            "type": "vcs",
+            "url": "https://github.com/Scaffgang/scaffai-module.git"
         }
     },
     "require": {
@@ -105,6 +109,7 @@
         "drupal/webform": "^6.3.0-beta8",
         "drupal/yoast_seo": "^2.2.0",
         "league/commonmark": "^2.4",
+        "scaffgang/scaffai": "dev-main",
         "torneoz/grok_doc": "^1.0@alpha"
     },
     "require-dev": {
