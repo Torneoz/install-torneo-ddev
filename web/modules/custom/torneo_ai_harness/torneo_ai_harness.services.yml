@@ -1,7 +1,1 @@
-services:
-  Drupal\ai_usage_limits\EventSubscriber\CheckTokenUsageSubscriber:
-    class: Drupal\torneo_ai_harness\EventSubscriber\CheckTokenUsageSubscriber
-    autowire: true
-    tags:
-      - { name: event_subscriber }
-
+services: {  }

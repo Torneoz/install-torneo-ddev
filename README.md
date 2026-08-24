@@ -50,19 +50,30 @@ Contributed Drupal projects are resolved through the official
 
 ### AI cost and usage governance modules
 
-The harness enables the related projects together for comparison and
-integration testing:
+The harness includes the related projects for comparison and integration
+testing. AI Usage Limits remains available through Composer but is not enabled
+by the harness recipe:
 
 | Module | Included capability |
 | --- | --- |
 | [AI Costs](https://www.drupal.org/project/ai_costs) | Provider-neutral pricing metadata, request estimates, and usage-cost records. |
 | [AI Metering](https://www.drupal.org/project/ai_metering) | Per-call metering, cost dashboards, quotas, pricing sync, and exports. |
 | [AI Budget Control](https://www.drupal.org/project/ai_budget_control) | Provider, role, and user budgets with hard and soft limits. |
-| [AI Usage Limits](https://www.drupal.org/project/ai_usage_limits) | Provider-level token ceilings for supported usage categories. |
+| [AI Usage Limits](https://www.drupal.org/project/ai_usage_limits) | Available but not enabled: provider-level token ceilings for supported usage categories. |
 
 These modules overlap intentionally. This site is a test harness, not a
 recommended production configuration; evaluate which governance model fits a
 production site before enabling overlapping enforcement policies.
+
+### Grok Entity PDF Creator
+
+The experimental Explorer at
+`/admin/config/ai/explorers/grok_entity_pdf_creator` creates document drafts
+from viewable Drupal content entities. It shows the exact grounded entity data
+sent to Grok, previews the returned semantic HTML, and renders the downloadable
+PDF locally in Drupal. xAI supports PDF inputs, but does not currently document
+a native PDF-generation response type; the Explorer intentionally keeps binary
+PDF creation and access control in Drupal.
 
 ## Requirements
 

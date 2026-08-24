@@ -4,6 +4,8 @@ description: 'Provides dynamic project navigation for the Torneo AI test harness
 package: 'Torneo AI'
 core_version_requirement: ^11
 dependencies:
-  - ai_usage_limits:ai_usage_limits
+  - ai:ai
+  - ai:ai_api_explorer
   - drupal:block
   - canvas:canvas
+  - grok:grok
