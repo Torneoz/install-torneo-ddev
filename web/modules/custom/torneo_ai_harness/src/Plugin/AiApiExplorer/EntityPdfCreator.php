@@ -169,14 +169,16 @@ final class EntityPdfCreator extends AiApiExplorerPluginBase {
           '#type' => 'container',
           '#attributes' => ['class' => ['ai-text-response']],
           'content' => ['#markup' => $html],
-        ],
-        'actions' => [
-          '#type' => 'actions',
           'download' => [
             '#type' => 'link',
-            '#title' => $this->t('Download PDF'),
+            '#title' => $this->t('Download as PDF'),
             '#url' => Url::fromRoute('torneo_ai_harness.entity_pdf_download', ['token' => $token]),
-            '#attributes' => ['class' => ['button', 'button--primary']],
+            '#attributes' => [
+              'class' => ['button', 'button--primary'],
+              'download' => TRUE,
+            ],
+            '#prefix' => '<div class="form-actions">',
+            '#suffix' => '</div>',
           ],
         ],
         'grounding' => [
