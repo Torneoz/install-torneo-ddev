@@ -65,16 +65,6 @@ These modules overlap intentionally. This site is a test harness, not a
 recommended production configuration; evaluate which governance model fits a
 production site before enabling overlapping enforcement policies.
 
-### Grok Entity PDF Creator
-
-The experimental Explorer at
-`/admin/config/ai/explorers/grok_entity_pdf_creator` creates document drafts
-from viewable Drupal content entities. It shows the exact grounded entity data
-sent to Grok, previews the returned semantic HTML, and renders the downloadable
-PDF locally in Drupal. xAI supports PDF inputs, but does not currently document
-a native PDF-generation response type; the Explorer intentionally keeps binary
-PDF creation and access control in Drupal.
-
 ## Requirements
 
 - Git

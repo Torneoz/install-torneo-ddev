@@ -1,7 +1,0 @@
-torneo_ai_harness.entity_pdf_download:
-  path: '/admin/config/ai/explorers/grok-entity-pdf/download/{token}'
-  defaults:
-    _controller: '\Drupal\torneo_ai_harness\Controller\EntityPdfController::download'
-  requirements:
-    _permission: 'access ai prompt'
-    token: '[a-f0-9]{32}'

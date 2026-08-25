@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71a071d41affa576e86f738ddce08f66",
+    "content-hash": "25a43c68fce7d2f82c0a3c7061a242d3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4867,7 +4867,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/grok.git",
-                "reference": "de9356a10577ba517e190e3c9d47f12981ee68d6"
+                "reference": "4f080f41e39e18bdac77ff137ab4ec277d7b03e0"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -4888,8 +4888,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "1.0.0-beta4+4-dev",
-                    "datestamp": "1787617264",
+                    "version": "1.0.0-beta4+6-dev",
+                    "datestamp": "1787619589",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -10314,12 +10314,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Scaffgang/scaffai-module.git",
-                "reference": "8b123daae4631d519ebd3a963199665dfba2a2a2"
+                "reference": "7ff57b6969489e1be1399bbd0bd74fc90c644332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Scaffgang/scaffai-module/zipball/8b123daae4631d519ebd3a963199665dfba2a2a2",
-                "reference": "8b123daae4631d519ebd3a963199665dfba2a2a2",
+                "url": "https://api.github.com/repos/Scaffgang/scaffai-module/zipball/7ff57b6969489e1be1399bbd0bd74fc90c644332",
+                "reference": "7ff57b6969489e1be1399bbd0bd74fc90c644332",
                 "shasum": ""
             },
             "require": {
@@ -10359,7 +10359,7 @@
                 "issues": "https://github.com/Scaffgang/scaffai-module/issues",
                 "source": "https://github.com/Scaffgang/scaffai-module"
             },
-            "time": "2026-08-24T04:24:17+00:00"
+            "time": "2026-08-25T02:42:37+00:00"
         },
         {
             "name": "sebastian/diff",
