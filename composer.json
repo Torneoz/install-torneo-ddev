@@ -4,10 +4,6 @@
     "type": "project",
     "license": "GPL-2.0-or-later",
     "repositories": {
-        "ai_image_studio": {
-            "type": "vcs",
-            "url": "https://github.com/Torneoz/ai_image_studio.git"
-        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -30,7 +26,7 @@
         "drupal/ai_costs": "^1.0@alpha",
         "drupal/ai_dashboard": "^1",
         "drupal/ai_image_alt_text": "^1",
-        "drupal/ai_image_studio": "dev-main as 1.0.99",
+        "drupal/ai_image_studio": "^1.0@beta",
         "drupal/ai_media_image": "^1.0@alpha",
         "drupal/ai_metering": "^1.0",
         "drupal/ai_provider_amazeeio": "^1.2.7",
@@ -72,7 +68,7 @@
         "drupal/gin_login": "^2.1.4",
         "drupal/gin_toolbar": "^3.0.3",
         "drupal/google_tag": "^2.0.7",
-        "drupal/grok": "dev-1.x as 1.0.x-dev",
+        "drupal/grok": "^1.0@beta",
         "drupal/haven_theme": "^1",
         "drupal/honeypot": "^2.2.2",
         "drupal/jquery_ui": "^1.8.0",
