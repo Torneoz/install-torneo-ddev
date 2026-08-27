@@ -3,9 +3,7 @@ description: 'Installs Drupal AI, costs, observability, CKEditor integration, Op
 type: recipe
 
 install:
-  - locale
   - torneo_ai_harness
-  - torneo_ai_language
   - ai
   - ai_costs
   - ai_metering
