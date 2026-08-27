@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad7d973308df7841485cad2b47bcb2d8",
+    "content-hash": "9d2ece70d85040e689353ee6c4db870f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1767,17 +1767,11 @@
         },
         {
             "name": "drupal/ai_image_studio",
-            "version": "1.0.0-beta8",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_image_studio.git",
-                "reference": "1.0.0-beta8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_image_studio-1.0.0-beta8.zip",
-                "reference": "1.0.0-beta8",
-                "shasum": "465042d0719366aa024569ee8fd4bd629b234b13"
+                "reference": "44ea35959e9b9f34189ec319844feb013720034d"
             },
             "require": {
                 "drupal/ai": "^1.4",
@@ -1792,32 +1786,16 @@
                 "drupal/torneo_ai": "Provides shared provider-neutral cost estimates when an API does not report request cost."
             },
             "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.0-beta8",
-                    "datestamp": "1787529382",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
                 "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "torneoz",
-                    "homepage": "https://www.drupal.org/user/3870786"
-                }
             ],
             "description": "Conversational image and video generation using Drupal AI providers.",
             "homepage": "https://www.drupal.org/project/ai_image_studio",
             "support": {
-                "source": "https://github.com/Torneoz/ai_image_studio",
-                "issues": "https://www.drupal.org/project/issues/ai_image_studio"
-            }
+                "issues": "https://www.drupal.org/project/issues/ai_image_studio",
+                "source": "https://github.com/Torneoz/ai_image_studio"
+            },
+            "time": "2026-08-23T23:45:00+00:00"
         },
         {
             "name": "drupal/ai_media_image",
@@ -10380,24 +10358,24 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "7.0.0",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "7ab1ea946c012266ca32390913653d844ecd085f"
+                "reference": "cd4cabe39f8a4e8ee6818ba99f10a05561ea4ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/7ab1ea946c012266ca32390913653d844ecd085f",
-                "reference": "7ab1ea946c012266ca32390913653d844ecd085f",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/cd4cabe39f8a4e8ee6818ba99f10a05561ea4ad6",
+                "reference": "cd4cabe39f8a4e8ee6818ba99f10a05561ea4ad6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^12.0",
-                "symfony/process": "^7.2"
+                "phpunit/phpunit": "^12.5.33",
+                "symfony/process": "^7.4.17"
             },
             "type": "library",
             "extra": {
@@ -10435,15 +10413,27 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/7.0.0"
+                "source": "https://github.com/sebastianbergmann/diff/tree/7.0.1"
             },
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
                     "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/sebastianbergmann",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://thanks.dev/u/gh/sebastianbergmann",
+                    "type": "thanks_dev"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/sebastian/diff",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2025-02-07T04:55:46+00:00"
+            "time": "2026-08-25T15:35:54+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -15477,7 +15467,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/ai_costs": 15,
-        "drupal/ai_image_studio": 10,
+        "drupal/ai_image_studio": 20,
         "drupal/ai_media_image": 15,
         "drupal/ai_usage_limits": 15,
         "drupal/grok": 10,
