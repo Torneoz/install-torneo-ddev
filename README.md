@@ -24,6 +24,7 @@ This repository is an AI integration harness. It does not install
 - Grok Documents (`torneoz/grok_doc`)
 - Gemini Provider
 - AI Image Studio
+- AI Image Studio VBO integration with Views Bulk Operations
 - Ask Scaffgang (ScaffAI)
 - AI Media Image
 - AI Image Alt Text and AI Image Bulk Alt Text
@@ -211,7 +212,7 @@ Verify the required modules:
 
 ```bash
 ddev drush pm:list --status=enabled --type=module --format=list \
-  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_media_image|ai_provider_openai|gemini_provider|grok)$'
+  | grep -E '^(ai|ai_agents|ai_assistant_api|ai_chatbot|ai_dashboard|ai_api_explorer|ai_image_alt_text|ai_image_bulk_alt_text|ai_image_studio|ai_image_studio_vbo|ai_media_image|ai_provider_openai|gemini_provider|grok|views_bulk_operations)$'
 ```
 
 Verify the packaged assistant, block, and default provider:
