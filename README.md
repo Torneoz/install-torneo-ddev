@@ -25,7 +25,6 @@ This repository is an AI integration harness. It does not install
 - Gemini Provider
 - AI Image Studio
 - AI Image Studio VBO integration with Views Bulk Operations
-- Ask Scaffgang (ScaffAI)
 - AI Media Image
 - AI Image Alt Text and AI Image Bulk Alt Text
 - Drupal Canvas components for both AI chatbot block types

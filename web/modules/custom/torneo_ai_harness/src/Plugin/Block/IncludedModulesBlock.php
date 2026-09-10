@@ -100,7 +100,6 @@ final class IncludedModulesBlock extends BlockBase implements ContainerFactoryPl
         ['name' => 'AI Observability', 'module' => 'ai_observability', 'package' => 'drupal/ai', 'url' => 'https://www.drupal.org/project/ai', 'route' => 'ai_observability.settings'],
       ],
       'Third-party AI modules' => [
-        ['name' => 'Ask Scaffgang (ScaffAI)', 'module' => 'scaffai', 'package' => 'scaffgang/scaffai', 'url' => 'https://github.com/Scaffgang/scaffai-module', 'route' => 'scaffai.settings'],
         ['name' => 'AI Agents', 'module' => 'ai_agents', 'package' => 'drupal/ai_agents', 'url' => 'https://www.drupal.org/project/ai_agents', 'route' => 'entity.ai_agent.collection', 'route_label' => 'Open'],
         ['name' => 'AI Metering', 'module' => 'ai_metering', 'package' => 'drupal/ai_metering', 'url' => 'https://www.drupal.org/project/ai_metering', 'route' => 'ai_metering.settings'],
         ['name' => 'AI Budget Control', 'module' => 'ai_budget_control', 'package' => 'drupal/ai_budget_control', 'url' => 'https://www.drupal.org/project/ai_budget_control', 'route' => 'ai_budget_control.dashboard', 'route_label' => 'Open'],
