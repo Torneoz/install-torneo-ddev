@@ -25,9 +25,12 @@ install:
   - ai_image_studio
   - views_bulk_operations
   - ai_image_studio_vbo
+  - ai_storyboard
   - ai_media_image
 
 config:
+  import:
+    ai_storyboard: '*'
   actions:
     ai_provider_openai.settings:
       simpleConfigUpdate:

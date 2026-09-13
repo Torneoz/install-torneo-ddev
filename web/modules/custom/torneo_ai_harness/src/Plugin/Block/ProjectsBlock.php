@@ -119,16 +119,6 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'ui_label' => 'API Explorer',
       ],
       [
-        'title' => 'Torneo AI Language',
-        'package' => 'drupal/torneo_ai_language',
-        'description' => 'Coordinate source and target language context across AI-powered Torneo features with a shared, provider-neutral language policy.',
-        'icon' => 'language',
-        'repository' => 'https://github.com/Jonno/torneo_ai_language',
-        'repository_label' => 'GitHub',
-        'drupal' => 'https://www.drupal.org/project/torneo_ai_language',
-        'settings' => 'torneo_ai_language.settings',
-      ],
-      [
         'title' => 'AI Image Studio',
         'package' => 'drupal/ai_image_studio',
         'description' => 'Generate, refine, compare, and publish AI images and videos through a conversational Drupal workspace with usage and cost metadata.',
@@ -149,15 +139,6 @@ final class ProjectsBlock extends BlockBase implements ContainerFactoryPluginInt
         'settings' => 'ai.settings.menu',
         'ui' => 'ai_api_explorer.list_page',
         'ui_label' => 'API Explorer',
-      ],
-      [
-        'title' => 'AI Costs',
-        'package' => 'drupal/ai_costs',
-        'description' => 'Track provider-neutral model pricing, estimate request costs, and record usage metadata across Drupal AI integrations.',
-        'icon' => 'costs',
-        'repository' => 'https://git.drupalcode.org/project/ai_costs',
-        'drupal' => 'https://www.drupal.org/project/ai_costs',
-        'settings' => 'ai_costs.settings',
       ],
       [
         'title' => 'Grok Collections',
