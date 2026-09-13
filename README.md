@@ -32,6 +32,9 @@ This repository is an AI integration harness. It does not install
 - A preconfigured `Harness Chatbot` agent and assistant
 
 Composer installs the exact dependency versions recorded in `composer.lock`.
+Drupal core packages are restricted to 11.x. Canvas 1.11.0 is excluded because
+it fails during Drupal CMS recipe installation with a synthetic `kernel`
+service exception; the tested installation uses Canvas 1.10.1.
 Contributed Drupal projects are resolved through the official
 `https://packages.drupal.org/8` Composer repository.
 

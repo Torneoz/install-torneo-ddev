@@ -117,6 +117,7 @@
         "drush/drush": "^13.7"
     },
     "conflict": {
+        "drupal/canvas": "1.11.0",
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
