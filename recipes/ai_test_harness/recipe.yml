@@ -15,6 +15,9 @@ install:
   - ai_chatbot
   - ai_dashboard
   - ai_api_explorer
+  - mcp_server
+  - tool
+  - mcp_server_tool_bridge
   - ai_provider_openai
   - ai_provider_anthropic
   - grok
@@ -23,6 +26,7 @@ install:
   - ai_image_alt_text
   - ai_image_bulk_alt_text
   - ai_image_studio
+  - ai_narration
   - views_bulk_operations
   - ai_image_studio_vbo
   - ai_storyboard
