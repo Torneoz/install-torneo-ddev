@@ -11,6 +11,7 @@ install:
   - ai_observability
   - ai_ckeditor
   - ai_agents
+  - canvas_ai
   - ai_assistant_api
   - ai_chatbot
   - ai_dashboard

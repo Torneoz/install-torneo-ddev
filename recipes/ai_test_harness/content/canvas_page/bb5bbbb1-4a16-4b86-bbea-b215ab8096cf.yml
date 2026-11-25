@@ -17,7 +17,7 @@ default:
       uuid: 5eb3cda4-eb09-4307-9a5a-ec511e13446d
       component_id: sdc.mercury.cta
       inputs:
-        heading_text: 'Build and test Torneo AI integrations'
+        heading_text: 'Torneo AI integrations'
         level: 1
         text: 'A reproducible Drupal environment for exploring AI providers, conversational assistants, image and video generation, agents, and developer tooling.'
         text_align: center
@@ -130,14 +130,42 @@ default:
       uuid: 24d07b36-24fb-4e6c-ad16-d67187712420
       component_id: sdc.mercury.button
       inputs:
-        variant: secondary
+        variant: primary
         size: large
-        label: 'Start Image Studio'
+        label: 'Image Studio'
         href: /admin/content/ai-image-studio/new
         mobile_width: false
         icon: arrow-right
         icon_first: false
         disabled: false
+    -
+      parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      slot: actions
+      uuid: a060fd15-3210-475d-9236-c554d536d109
+      component_id: sdc.mercury.button
+      inputs:
+        variant: primary
+        label: 'AI Narration'
+        size: large
+        icon: arrow-right
+        mobile_width: false
+        icon_first: false
+        disabled: false
+        href: /admin/content/ai-narration
+    -
+      parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
+      slot: actions
+      uuid: 58f7951d-0692-4dc2-b145-2fb4fd2b1b8b
+      component_id: sdc.mercury.button
+      inputs:
+        variant: primary
+        label: 'AI Storyboard'
+        size: large
+        icon: arrow-right
+        mobile_width: false
+        icon_first: false
+        disabled: false
+        href: /admin/content/ai-storyboard
     -
       parent_uuid: 21c67156-067e-4410-a52e-4350f869bb54
       slot: actions

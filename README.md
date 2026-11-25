@@ -13,6 +13,7 @@ This repository is an AI integration harness. It does not install
 
 - Drupal AI Core 1.x
 - AI Agents and AI Assistant API
+- Drupal Canvas AI page-building assistant
 - AI Chatbot with a preconfigured DeepChat toolbar block
 - AI Dashboard and AI API Explorer
 - AI Costs and AI Observability
