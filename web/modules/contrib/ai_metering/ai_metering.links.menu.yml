@@ -1,0 +1,42 @@
+ai_metering.hub:
+  title: 'AI Metering'
+  description: 'Overview hub: usage dashboards, settings, pricing sync, and exports.'
+  route_name: ai_metering.hub
+  parent: ai.config
+  weight: 3
+
+ai_metering.admin_overview:
+  title: 'AI Metering'
+  description: 'Token usage tracking, cost estimation, and per-user or per-role quota governance.'
+  route_name: ai_metering.hub
+  parent: ai.admin_settings
+  weight: 10
+
+
+ai_metering.settings:
+  title: 'AI Metering Settings'
+  description: 'Currency, pricing tiers, exchange rates, and quota defaults.'
+  route_name: ai_metering.settings
+  parent: ai_metering.hub
+  weight: 3
+
+ai_metering.dashboard:
+  title: 'AI Usage by User'
+  description: 'Per-user AI token usage and quota for the current month.'
+  route_name: ai_metering.dashboard
+  parent: system.admin_reports
+  weight: 10
+
+ai_metering.dashboard_by_role:
+  title: 'AI Usage by Role'
+  description: 'AI token usage aggregated by role.'
+  route_name: ai_metering.dashboard_by_role
+  parent: system.admin_reports
+  weight: 12
+
+ai_metering.my_usage:
+  title: 'My AI usage'
+  description: 'Your own AI usage and quota for the current month.'
+  route_name: ai_metering.my_usage
+  menu_name: account
+  weight: -2

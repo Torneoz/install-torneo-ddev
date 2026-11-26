@@ -1,0 +1,385 @@
+<?php
+
+/**
+ * @file
+ * Hooks and theme registrations for the AI Metering module.
+ */
+
+use Drupal\ai_metering\Service\UsageExportService;
+use Drupal\Core\Url;
+use Drupal\user\UserInterface;
+use Drupal\views\ViewExecutable;
+use Symfony\Component\HttpFoundation\HeaderUtils;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ai_metering_page_attachments(array &$attachments): void {
+  if (\Drupal::currentUser()->hasPermission('access toolbar')) {
+    $attachments['#attached']['library'][] = 'ai_metering/ai_metering_toolbar';
+  }
+
+  $routeName = \Drupal::routeMatch()->getRouteName() ?? '';
+
+  if ($routeName === 'view.ai_usage_log.dashboard') {
+    $attachments['#attached']['library'][] = 'ai_metering/log_export_links';
+  }
+
+  if (!\Drupal::moduleHandler()->moduleExists('ai_translate')) {
+    return;
+  }
+
+  if (!str_contains($routeName, 'content_translation_overview')) {
+    return;
+  }
+
+  $attachments['#attached']['library'][] = 'ai_metering/ai_metering_estimate';
+  $attachments['#attached']['drupalSettings']['aiMeteringEstimate'] = [
+    'estimateUrl' => Url::fromRoute('ai_metering.token_estimate')->toString(),
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ai_metering_theme(): array {
+  return [
+    'ai_metering_hub' => [
+      'variables' => [
+        'display_currency' => 'USD',
+        'personal_usage_url' => NULL,
+        'usage_log_url' => NULL,
+      ],
+      'template' => 'ai-metering-hub',
+    ],
+    'ai_metering_dashboard' => [
+      'variables' => [
+        'rows' => [],
+        'totals' => [],
+        'month_label' => '',
+        'active_month' => '',
+        'active_year' => '',
+        'active_mon' => '',
+        'available_months' => [],
+        'available_years' => [],
+        'display_currency' => 'USD',
+        'alert_threshold' => 75,
+        'system_limits' => NULL,
+        'set_quota_url' => '',
+        'set_threshold_url' => '',
+        'log_base_url' => NULL,
+        'export_dropbutton' => [],
+        'by_role_url' => NULL,
+        'top_active' => [],
+        'sort_links' => [],
+        'pager' => [],
+      ],
+      'template' => 'ai-metering-dashboard',
+    ],
+    'ai_metering_by_role' => [
+      'variables' => [
+        'rows' => [],
+        'totals' => [],
+        'month_label' => '',
+        'active_month' => '',
+        'active_year' => '',
+        'active_mon' => '',
+        'available_months' => [],
+        'available_years' => [],
+        'display_currency' => 'USD',
+        'threshold' => 75,
+        'export_dropbutton' => [],
+        'top_active' => [],
+        'by_user_url' => NULL,
+        'pager' => [],
+      ],
+      'template' => 'ai-metering-by-role',
+    ],
+    'ai_metering_personal_usage' => [
+      'variables' => [
+        'payload' => [],
+        'variant' => 'block',
+        'show_sparkline' => TRUE,
+        'show_breakdown' => TRUE,
+        'details_url' => NULL,
+        'refresh_url' => NULL,
+      ],
+      'template' => 'ai-metering-personal-usage',
+    ],
+    'ai_metering_top_active' => [
+      'variables' => [
+        'rows' => [],
+        'month_label' => '',
+        'subject_label' => 'editors',
+      ],
+      'template' => 'ai-metering-top-active',
+    ],
+    'ai_metering_summary' => [
+      'variables' => [
+        'calls' => 0,
+        'cloud_calls' => 0,
+        'local_calls' => 0,
+        'tokens' => 0,
+        'tokens_in' => 0,
+        'tokens_out' => 0,
+        'cost_display' => '',
+        'quota_pct' => 0,
+        'quota_state' => 'ok',
+        'quota_used' => 0,
+        'quota_budget' => 0,
+        'month_label' => '',
+        'dashboard_url' => NULL,
+      ],
+      'template' => 'ai-metering-summary',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ai_metering_mail(string $key, array &$message, array $params): void {
+  switch ($key) {
+    case 'quota_threshold':
+      $message['subject'] = t('AI quota alert: @user has reached @threshold% of their monthly budget', [
+        '@user' => $params['username'],
+        '@threshold' => $params['threshold'],
+      ]);
+      $message['body'][] = t('@user has used @pct% of their monthly AI token budget (@used / @budget tokens).', [
+        '@user' => $params['username'],
+        '@pct' => $params['pct_used'],
+        '@used' => number_format($params['tokens_used']),
+        '@budget' => number_format($params['budget']),
+      ]);
+      $message['body'][] = t('Review full usage at: /admin/reports/ai-metering');
+      break;
+
+    case 'quota_fallback_user':
+      $message['subject'] = t('Your AI quota is reached — using local model');
+      $message['body'][] = t('Your monthly AI token quota is reached. Subsequent translations will use @provider (local) at no extra cost.', [
+        '@provider' => $params['fallback_provider'],
+      ]);
+      $message['body'][] = t('Your usage will continue to be tracked in the AI Metering dashboard.');
+      break;
+
+    case 'quota_fallback_admin':
+      $message['subject'] = t('AI quota exceeded: @user switched to @provider fallback', [
+        '@user' => $params['username'],
+        '@provider' => $params['fallback_provider'],
+      ]);
+      $message['body'][] = t('@user (@mail) has exceeded their monthly AI token quota (@used / @budget tokens). The fallback provider @provider is now active for their requests.', [
+        '@user' => $params['username'],
+        '@mail' => $params['user_mail'],
+        '@used' => number_format($params['tokens_used']),
+        '@budget' => number_format($params['budget']),
+        '@provider' => $params['fallback_provider'],
+      ]);
+      $message['body'][] = t('Review full usage at: /admin/reports/ai-metering');
+      break;
+  }
+}
+
+/**
+ * Implements hook_ai_metering_quota_exceeded().
+ *
+ * Sends email notifications to the user and/or site admin when their monthly
+ * quota is exceeded and the Ollama fallback becomes active.
+ */
+function ai_metering_ai_metering_quota_exceeded(int $uid, string $providerId, array $quota): void {
+  $config = \Drupal::config('ai_metering.settings');
+  $userOnFallback = (bool) ($config->get('notifications.user_on_fallback') ?? TRUE);
+  $adminOnFallback = (bool) ($config->get('notifications.admin_on_fallback') ?? TRUE);
+  $fallbackProvider = (string) ($config->get('quota.fallback_provider') ?? '');
+
+  if (!$userOnFallback && !$adminOnFallback) {
+    return;
+  }
+
+  // Only notify when a fallback provider is actually configured.
+  if ($fallbackProvider === '') {
+    return;
+  }
+
+  /** @var \Drupal\user\UserInterface|null $account */
+  $account = \Drupal::entityTypeManager()->getStorage('user')->load($uid);
+  if (!$account) {
+    return;
+  }
+
+  $username = $account->label();
+  $userMail = (string) $account->getEmail();
+  $params = [
+    'username' => $username,
+    'user_mail' => $userMail,
+    'fallback_provider' => ucfirst($fallbackProvider),
+    'tokens_used' => $quota['tokens_used'],
+    'budget' => $quota['monthly_budget'],
+  ];
+
+  /** @var \Drupal\Core\Mail\MailManagerInterface $mailManager */
+
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $langcode = $account->getPreferredLangcode();
+
+  if ($userOnFallback && $userMail !== '') {
+    $mailManager->mail('ai_metering', 'quota_fallback_user', $userMail, $langcode, $params);
+  }
+
+  if ($adminOnFallback) {
+    $adminMail = \Drupal::config('system.site')->get('mail');
+    if ($adminMail) {
+      $mailManager->mail('ai_metering', 'quota_fallback_admin', $adminMail, $langcode, $params);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * Injects CSV and JSON export links as a render array into the dashboard
+ * header. Using preprocess rather than hardcoding HTML in config keeps the
+ * markup out of YAML, makes the labels translatable, and lets themes override.
+ */
+function ai_metering_preprocess_views_view(array &$variables): void {
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+  if ($view->id() !== 'ai_usage_log' || $view->current_display !== 'dashboard') {
+    return;
+  }
+  // Single dropbutton (core 'operations' element), same pattern as the
+  // per-editor and by-role dashboards, instead of two separate buttons
+  // (#3611743). The 'ai-metering-export-link' class is kept on each link so
+  // js/log-export-links.js can still find them and propagate the active
+  // Views filters onto the href.
+  $variables['header']['export_links'] = [
+    '#type' => 'operations',
+    '#links' => [
+      'csv' => [
+        'title' => t('Export CSV'),
+        'url' => Url::fromRoute('view.ai_usage_log.data_export_csv'),
+        'attributes' => ['class' => ['ai-metering-export-link']],
+      ],
+      'json' => [
+        'title' => t('Export JSON'),
+        'url' => Url::fromRoute('ai_metering.log_export_json'),
+        'attributes' => ['class' => ['ai-metering-export-link']],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ai_metering_views_pre_render(ViewExecutable $view): void {
+  if ($view->id() === 'ai_usage_log') {
+    $view->element['#attached']['library'][] = 'ai_metering/ai_metering_log';
+    // QuotaManager::logUsage() already invalidates this tag on every insert.
+    // @see https://www.drupal.org/project/ai_metering/issues/3621682
+    $view->element['#cache']['tags'][] = 'ai_metering_usage';
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * Selects the safest available filesystem for the VDE CSV export display.
+ * Prefers private (access-controlled, not web-accessible) when configured;
+ * falls back to temporary (also not web-accessible, auto-cleaned by cron).
+ * Never uses public, which would expose files in the webroot.
+ */
+function ai_metering_views_pre_view(ViewExecutable $view, string $display_id, array &$args): void {
+  if ($view->id() !== 'ai_usage_log' || $display_id !== 'data_export_csv') {
+    return;
+  }
+  $sm = \Drupal::service('stream_wrapper_manager');
+  $filesystem = $sm->isValidScheme('private') ? 'private' : 'temporary';
+  $view->display_handler->setOption('export_filesystem', $filesystem);
+
+  // Apply contextual user argument: from batch args or from ?uid query param.
+  // is_numeric() + (int) cast is intentional: is_numeric() rejects non-numeric
+  // strings (e.g. paths), and (int) normalizes any numeric string, including
+  // scientific notation, to a safe integer before it reaches a parameterized
+  // query condition.
+  $uid = isset($args[0]) && is_numeric($args[0]) ? (int) $args[0] : 0;
+  if ($uid === 0) {
+    // Non-numeric or missing uid defaults to 0 (no user filter applied).
+    $uid = (int) \Drupal::request()->query->get('uid', 0);
+  }
+  if ($uid > 0) {
+    $view->setArguments([$uid]);
+  }
+
+  $exposed = $view->getExposedInput();
+  $period = (array) ($exposed['period'] ?? []);
+  $providers = array_filter((array) ($exposed['provider'] ?? []));
+  $role = (string) ($exposed['role'] ?? '');
+
+  $username = '';
+  if ($uid > 0) {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($uid);
+    $username = $user ? (string) $user->getDisplayName() : '';
+  }
+
+  $filename = UsageExportService::buildExportFilename('csv', $period, $providers, $role, $username);
+  $view->display_handler->setOption('filename', $filename);
+}
+
+/**
+ * Implements hook_file_download().
+ *
+ * Grants access to VDE CSV export files created by the AI Usage Log display.
+ * This covers both private:// and temporary:// schemes because VDE's own
+ * finishBatch() requires at least one module to return headers.
+ */
+function ai_metering_file_download(string $uri): array|int {
+  $pattern = 'views_data_export/ai_usage_log_data_export_csv/';
+  if (!str_contains($uri, $pattern)) {
+    return [];
+  }
+  if (\Drupal::currentUser()->hasPermission('export ai metering usage log')) {
+    return [
+      'Content-Type' => 'text/csv; charset=utf-8',
+      'Content-Disposition' => HeaderUtils::makeDisposition(
+        HeaderUtils::DISPOSITION_ATTACHMENT,
+        basename($uri),
+      ),
+    ];
+  }
+  return -1;
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Rolls completed months into ai_metering_rollup, then purges raw usage rows
+ * older than the configured retention. See RollupManager for the guarantees.
+ */
+function ai_metering_cron(): void {
+  \Drupal::service('ai_metering.rollup_manager')->runCron();
+}
+
+/**
+ * Implements hook_user_cancel().
+ *
+ * With the "delete account, keep content" method the account disappears but
+ * its activity should stay countable: UserDataPurger reassigns usage and
+ * rollup rows to the anonymous user and drops the personal quota rows.
+ * Blocking methods keep the account, so nothing is touched. Full deletion
+ * is handled by ai_metering_user_delete().
+ */
+function ai_metering_user_cancel(array $edit, UserInterface $account, string $method): void {
+  if ($method === 'user_cancel_reassign') {
+    \Drupal::service('ai_metering.user_data_purger')->reassignToAnonymous((int) $account->id());
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() for user entities.
+ *
+ * Right to erasure: deleting an account removes every row keyed by its uid
+ * from the usage log, the monthly rollup and the quota table.
+ */
+function ai_metering_user_delete(UserInterface $account): void {
+  \Drupal::service('ai_metering.user_data_purger')->purge((int) $account->id());
+}

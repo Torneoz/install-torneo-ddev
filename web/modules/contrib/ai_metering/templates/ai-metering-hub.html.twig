@@ -1,0 +1,67 @@
+{#
+  Variables: display_currency, personal_usage_url
+#}
+
+<div class="admin-list gin-layer-wrapper">
+
+  <div class="admin-item">
+    <a href="{{ url('ai_metering.dashboard') }}"
+       title="{{ 'Token usage, cost, and quota per user for the current month.'|t }}"
+       class="admin-item__link">{{ 'Dashboard by User'|t }}</a>
+    <div class="admin-item__title">{{ 'Dashboard by User'|t }}</div>
+    <div class="admin-item__description">{{ 'Token usage, cost (@cur), and quota per user for the current month.'|t({'@cur': display_currency}) }}</div>
+  </div>
+
+  <div class="admin-item">
+    <a href="{{ url('ai_metering.dashboard_by_role') }}"
+       title="{{ 'Token usage, cost, and quota aggregated by role.'|t }}"
+       class="admin-item__link">{{ 'Dashboard by Role'|t }}</a>
+    <div class="admin-item__title">{{ 'Dashboard by Role'|t }}</div>
+    <div class="admin-item__description">{{ 'Token usage, cost, and quota aggregated by role.'|t }}</div>
+  </div>
+
+  {% if usage_log_url %}
+    <div class="admin-item">
+      <a href="{{ usage_log_url }}"
+         title="{{ 'Full per-call usage log with filters by provider, model, and period.'|t }}"
+         class="admin-item__link">{{ 'AI Usage Log'|t }}</a>
+      <div class="admin-item__title">{{ 'AI Usage Log'|t }}</div>
+      <div class="admin-item__description">{{ 'Full per-call usage log with filters by provider, model, and period.'|t }}</div>
+    </div>
+  {% endif %}
+
+  <div class="admin-item">
+    <a href="{{ url('ai_metering.settings') }}"
+       title="{{ 'Display currency, exchange rates, pricing tiers, quota defaults, and alert thresholds.'|t }}"
+       class="admin-item__link">{{ 'Metering Settings'|t }}</a>
+    <div class="admin-item__title">{{ 'Metering Settings'|t }}</div>
+    <div class="admin-item__description">{{ 'Display currency, exchange rates (Frankfurter), pricing tiers, quota defaults, alert thresholds, and model pricing source.'|t }}</div>
+  </div>
+
+  <div class="admin-item">
+    <a href="/admin/config/ai"
+       title="{{ 'Provider API keys, default models, and drupal/ai configuration.'|t }}"
+       class="admin-item__link">{{ 'Drupal AI Settings'|t }}</a>
+    <div class="admin-item__title">{{ 'Drupal AI Settings'|t }}</div>
+    <div class="admin-item__description">{{ 'Provider API keys, default models, and drupal/ai configuration.'|t }}</div>
+  </div>
+
+  <div class="admin-item">
+    <a href="/admin/people/permissions#module-ai_metering"
+       title="{{ 'Control which roles can view the usage dashboards and administer metering settings.'|t }}"
+       class="admin-item__link">{{ 'Permissions'|t }}</a>
+    <div class="admin-item__title">{{ 'Permissions'|t }}</div>
+    <div class="admin-item__description">{{ 'Control which roles can view the usage dashboards and administer metering settings.'|t }}</div>
+  </div>
+
+  {% if personal_usage_url %}
+    <div class="admin-item">
+      <a href="{{ personal_usage_url }}"
+         title="{{ 'View your own AI usage and quota for the current month.'|t }}"
+         class="admin-item__link">{{ 'Personal usage'|t }}</a>
+      <div class="admin-item__title">{{ 'Personal usage'|t }}</div>
+      <div class="admin-item__description">{{ 'View your own AI usage and quota for the current month.'|t }}</div>
+    </div>
+  {% endif %}
+
+</div>
